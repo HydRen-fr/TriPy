@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Visualizer</title>
+</head>
+<body>
+  <div class="back-button">
+    <a href="{{ url_for('index') }}">
+      <i class="fas fa-arrow-circle-left fa-2x"></i>
+    </a>
+  </div>
+  <div class="container">
+    {{ template_content | safe }}
+  </div>
+</body>
+</html>
