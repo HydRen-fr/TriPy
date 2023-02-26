@@ -1,9 +1,8 @@
 Popup qui annonce l'interêt du site quand on arrive en 3 pages (une générale et une pour chaque compartiment du site et leur visée) dans le style de https://clementmihailescu.github.io/Pathfinding-Visualizer/#
 
-Logo
+Logo --> https://www.flaticon.com/free-icons/sorting-order
 
 PEDAGOGIE
-- Pouvoir définir la vitesse du tri
 - Améliorer l'interface graphique de tri.html
 - Commentaires et titres français
 - Etoffer avec des informations sur l'algorithme

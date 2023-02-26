@@ -2,18 +2,18 @@ import random
 from grapher import Plotter
 
 # Fonction qui crée l'objet de tri en fonction de l'algorithme choisi et des données à trier
-def create(algorithm_name, data):
+def create(algorithm_name, data, speed):
     # Sélection de l'algorithme en fonction de son nom
     if algorithm_name == 'selection':
-        sort_algo = SelectionSort(data)
+        sort_algo = SelectionSort(data, speed)
     elif algorithm_name == 'insertion':
-        sort_algo = InsertionSort(data)
+        sort_algo = InsertionSort(data, speed)
     elif algorithm_name == 'bubble':
-        sort_algo = BubbleSort(data)
+        sort_algo = BubbleSort(data, speed)
 
     # Si l'algorithme n'est pas reconnu, on utilise le tri par sélection par défaut   
     else:
-        sort_algo = SelectionSort(data)
+        sort_algo = SelectionSort(data, speed)
 
     return sort_algo
 
@@ -32,10 +32,10 @@ def set_random_array(length):
 # On récupère la vidéo à afficher
 
 class SelectionSort():
-    def __init__(self,data):
+    def __init__(self,data,speed):
         self.plotter = Plotter("Tri par sélection") 
         self.selection_sort(data)
-        self.video = self.plotter.animate(data)
+        self.video = self.plotter.animate(data, speed)
 
     def selection_sort(self,data):
         for i in range(len(data)): 
@@ -49,10 +49,10 @@ class SelectionSort():
         return data
 
 class InsertionSort():
-    def __init__(self,data):
+    def __init__(self,data,speed):
         self.plotter = Plotter("Tri par insertion") 
         self.insertion_sort(data)
-        self.video = self.plotter.animate(data)
+        self.video = self.plotter.animate(data, speed)
 
     def insertion_sort(self,data):
         for i in range(len(data)):
@@ -73,10 +73,10 @@ class InsertionSort():
         return data
     
 class BubbleSort():
-    def __init__(self,data):
+    def __init__(self,data,speed):
         self.plotter = Plotter("Tri à bulles") 
         self.bubble_sort(data)
-        self.video = self.plotter.animate(data)
+        self.video = self.plotter.animate(data, speed)
 
     def bubble_sort(self,data):
         for i in range(len(data)):
