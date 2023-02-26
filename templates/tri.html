@@ -2,17 +2,17 @@
 <html>
 <head>
   <link rel="stylesheet" href="static/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Importe la librairie Font Awesome pour utiliser des icônes -->
   <title>Visualizer</title>
 </head>
 <body>
   <div class="back-button">
-    <a href="{{ url_for('index') }}">
-      <i class="fas fa-arrow-circle-left fa-2x"></i>
+    <a href="{{ url_for('index') }}"> <!-- Crée un lien qui renvoie à l'URL de la page d'index de l'application Flask -->
+      <i class="fas fa-arrow-circle-left fa-2x"></i> <!-- Utilise l'icône de flèche de Font Awesome pour afficher une flèche gauche -->
     </a>
   </div>
   <div class="container">
-    {{ template_content | safe }}
+    {{ template_content | safe }} <!-- Utilise le contenu du template passé en paramètre pour afficher le contenu de la page -->
   </div>
 </body>
 </html>

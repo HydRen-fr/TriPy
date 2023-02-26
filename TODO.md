@@ -1,3 +1,7 @@
+Popup qui annonce l'interêt du site quand on arrive en 3 pages (une générale et une pour chaque compartiment du site et leur visée) dans le style de https://clementmihailescu.github.io/Pathfinding-Visualizer/#
+
+Logo
+
 PEDAGOGIE
 - Pouvoir définir la vitesse du tri
 - Améliorer l'interface graphique de tri.html

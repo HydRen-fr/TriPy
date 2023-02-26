@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="static/css/style.css">
-    <title>TriPy</title>
+    <link rel="stylesheet" href="static/css/style.css"> <!-- Importe la feuille de style CSS -->
+    <title>TriPy</title> <!-- Titre de la page -->
 </head>
 <body>
-    <div id="content">
-
-    <h1>TriPy</h1>
-    <form action="/tri" method="get" onsubmit="loading()">
-        <p>Choisissez la longueur de l'array à trier :</p>
-        <input type="range" id="array-length" name="array-length" min="1" max="30" value="15" oninput="updateValue()">
-        <span id="array-length-value">-</span>
-        <p>Choisissez l'algorithme que vous souhaitez visualiser :</p>
-        <button type="submit" name="sort" value="selection">Tri par sélection</button>
-        <button type="submit" name="sort" value="insertion">Tri par insertion</button>
-        <button type="submit" name="sort" value="bubble">Tri à bulles</button>
+    <div id="content"> <!-- Début de la div "content" qui contiendra le formulaire de tri -->
+    
+    <h1>TriPy</h1> <!-- Titre principal de la page -->
+    <form action="/tri" method="get" onsubmit="loading()"> <!-- Formulaire pour choisir la longueur de l'array et l'algorithme de tri -->
+        <p>Choisissez la longueur de l'array à trier :</p> <!-- Texte pour expliquer la première input -->
+        <input type="range" id="array-length" name="array-length" min="1" max="30" value="15" oninput="updateValue()"> <!-- Input pour choisir la longueur de l'array -->
+        <span id="array-length-value">-</span> <!-- Affichage dynamique de la valeur de l'input -->
+        <p>Choisissez l'algorithme que vous souhaitez visualiser :</p> <!-- Texte pour expliquer les boutons de tri -->
+        <button type="submit" name="sort" value="selection">Tri par sélection</button> <!-- Bouton pour lancer le tri par sélection -->
+        <button type="submit" name="sort" value="insertion">Tri par insertion</button> <!-- Bouton pour lancer le tri par insertion -->
+        <button type="submit" name="sort" value="bubble">Tri à bulles</button> <!-- Bouton pour lancer le tri à bulles -->
     </form>
 
     </div> 
 
-    <div id="loading">
-        <img src="static/settings.gif" alt="Loading...">
+    <div id="loading"> <!-- Div "loading" qui s'affiche pendant le chargement du tri -->
+        <img src="static/settings.gif" alt="Loading..."> <!-- Image de chargement -->
     </div>
        
-    <script src="static/js/script.js"></script>
+    <script src="static/js/script.js"></script> <!-- Importe le script JavaScript -->
 </body>
 </html>
