@@ -26,7 +26,7 @@ Une fois le projet installé, il peut être exécuté à partir de la ligne de c
 
 `python app.py` ou `flask run`
 
-Cela lancera l'interface utilisateur de TriPy sur votre navigateur web par défaut sur le [localhost](http://localhost:5000/).
+Cela lancera l'interface utilisateur de TriPy sur votre navigateur Web par défaut sur le [localhost](http://localhost:5000/).
 
 Vous pouvez maintenant commencer à travailler sur le projet et proposer **vos modifications** en créant des Pull Requests sur GitHub.
 
