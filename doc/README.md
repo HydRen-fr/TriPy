@@ -2,7 +2,7 @@
 
 ## Carte mentale pour comprendre le lien qu'ont les fichiers entre eux et comment ils fonctionnent
 
-![Carte mentale](tripy-map.png)
+<img src="tripy-map.png"  width="700" height="400">
 
 ## Explication de la carte mentale
 
