@@ -7,7 +7,6 @@
 ## Explication de la carte mentale
 
 <br>
-<br>
 
 ### Fichiers de liaisons entre les technologies de visualisation Python et l'interface humain-ordinateur
     
@@ -15,7 +14,6 @@
 
 **config.py** : Ce fichier contient les variables globales qu'on souhaite conserver entre les différentes routes du fichier *app.py*. Ce fichier est réinitialisé à l'appel de la fonction *reset_global_variables()*.
 
-<br>
 <br>
 <br>
 
@@ -27,7 +25,6 @@
 
 **plotly_graph.py** : Ce fichier utilise la bibliothèque Plotly. Il prend en entrée une liste de nombres et renvoie le temps d'exécution des 12 algorithmes disponibles sur TriPy. Chacun des 12 algorithmes a son propre code dans le fichier, indépendant de celui de *algorithmes.py* qui est reservé à la visualisation et la création d'une vidéo avec *traceurs_graphique.py*.
 
-<br>
 <br>
 <br>
 
