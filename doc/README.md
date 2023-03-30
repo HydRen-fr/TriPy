@@ -2,7 +2,7 @@
 
 ## Carte mentale pour comprendre le lien qu'ont les fichiers entre eux et comment ils fonctionnent
 
-<img src="tripy-map.png"  width="8000" height="500">
+![Carte mentale](https://raw.githubusercontent.com/HydRen-fr/TriPy/main/doc/tripy-map.png)
 
 ## Explication de la carte mentale
 
