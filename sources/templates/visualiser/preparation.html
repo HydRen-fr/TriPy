@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="static/css/preparation.css">
+    <link rel="icon" type="image/png" href="/static/logo-no-bckgrnd.png" sizes="64x64"/>
+    <title>Préparation</title> 
+</head>
+<body>
+    <div class="button-container">
+        <button class="button gauche" onclick="location.href='/'">←</button>
+        <button class="button droite" onclick="location.href='/choose-interact'">INTERAGIR</button>
+    </div>
+
+    <div id="content">
+        <form action="/preparation/visualizer" method="post" onsubmit="loading()">
+
+            <button type="button" id="data-toggle" onclick="data_switch()"><strong>Choisir les données</strong></button>
+
+            <p id="data-text">Taille des données</p>
+            <input type=hidden id="choix" name="choix" value="1">
+            <input type="range" id="array-length" name="array-length" min="1" max="30" value="15">
+            <input type="text" id="array-values" name="array-values" pattern=".*" oninvalid="this.setCustomValidity('Suivez le format demandé...')" oninput="this.setCustomValidity('')">
+
+            
+            <p>Vitesse</p>
+            <input type="range" id="speed" name="speed" min="200" max="1600" value="1000">
+            
+            
+            <button type="submit" name="tri" value="selection">Tri par sélection</button> 
+            <button type="submit" name="tri" value="insertion">Tri par insertion</button>
+            <button type="submit" name="tri" value="bulles">Tri à bulles</button>
+            <button type="submit" name="tri" value="cocktail">Tri cocktail</button> 
+            <button type="submit" name="tri" value="tas">Tri par tas</button> 
+            <button type="submit" name="tri" value="pigeon">Tri pigeon</button> 
+            <button type="submit" name="tri" value="fusion">Tri fusion</button> 
+            <button type="submit" name="tri" value="rapide">Tri rapide</button> 
+            <button type="submit" name="tri" value="arborescent">Tri arborescent</button>
+            <button type="submit" name="tri" value="peigne">Tri à peigne</button>
+            <button type="submit" name="tri" value="pair-impair">Tri pair-impair</button> 
+            <button type="submit" name="tri" value="shell">Tri de Shell</button> 
+        </form>
+    </div> 
+
+    <div id="loader" class="dots-bars-5"></div>
+      
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

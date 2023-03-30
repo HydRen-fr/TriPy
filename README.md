@@ -1,0 +1,37 @@
+# TriPy
+
+![Logo TriPy](/sources/static/logo-no-bckgrnd.png)
+
+**TriPy** est un projet de **visualisation d'algorithmes de tri** en **Python**. Il utilise la bibliothèque Matplotlib pour générer des animations et les présenter sur un site Web réalisé avec le framework Python **Flask**.
+
+## Accès au site
+
+Le site de **TriPy** est accessible [ici](https://tripy.pythonanywhere.com).
+
+---
+
+# Contribuer au projet
+
+Toutes les idées sont bonnes à prendre ! **Tout le monde est invité à contribuer au projet TriPy**.
+
+Si vous le souhaitez, voici comment vous pouvez le faire :
+
+Téléchargez le dossier **sources** de ce répertoire qui contient tout le code source.
+Ouvrez le dossier avec votre environnement de développement Python préféré.
+Installez les dépendances en utilisant la commande :
+    
+`pip install -r requirements.txt`
+    
+Une fois le projet installé, il peut être exécuté à partir de la ligne de commande : 
+
+`python app.py` ou `flask run`
+
+Cela lancera l'interface utilisateur de TriPy sur votre navigateur web par défaut sur le [localhost](http://localhost:5000/).
+
+Vous pouvez maintenant commencer à travailler sur le projet et proposer **vos modifications** en créant des Pull Requests sur GitHub.
+
+N'oubliez pas de consulter le fichier **TODO.md** pour plus d'informations sur la façon de **contribuer au projet**.
+
+## Licence
+
+TriPy est distribué sous la **licence libre GPL v3+**. Veuillez consulter le fichier LICENSE pour plus d'informations.

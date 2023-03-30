@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/graph.css"/>
+    <link rel="icon" type="image/png" href="/static/logo-no-bckgrnd.png" sizes="64x64"/>
+    <title>Graphique</title>
+  </head>
+
+  <body>
+
+    <div class="button-container">
+      <button class="button gauche" onclick="location.href='/preparation'">VISUALISER</button>
+
+      <button class="button droite" onclick="location.href='/choose-interact'">←</button>
+    </div>
+
+    
+      <div class="graph-container">
+
+        <form id="form-graph" method="POST" action="/choose-interact/graph" onsubmit="return testFunc()">
+          <div class="interactive-input">
+            <p>Entiers séparés par des espaces | entre 1 et 999 | limité à 400 nombres</p>
+            <textarea id="donnees-interactives" name="donnees-interactives" ></textarea>
+            <button class="buttonGraph" type="submit" form="form-graph" ><strong>&#8675;</strong></button>
+          </div>
+        </form>
+
+          <div class="execution-time-graph">
+            {{ exec_time_graph | safe }}
+          </div>
+
+          <script>
+            // Récupérer la zone de texte
+            var donneesInteractives = document.getElementById("donnees-interactives");
+      
+            // Sauvegarder les données d'entrée dans sessionStorage lorsque l'utilisateur soumet le formulaire
+            document.getElementById("form-graph").addEventListener("submit", function() {
+              sessionStorage.setItem("donneesInteractives", donneesInteractives.value);
+            });
+      
+            // Récupérer les données d'entrée à partir de sessionStorage
+            var donneesInteractivesStorage = sessionStorage.getItem("donneesInteractives");
+      
+            // Si les données d'entrée existent dans sessionStorage, les afficher dans la zone de texte
+            if (donneesInteractivesStorage !== null) {
+              donneesInteractives.value = donneesInteractivesStorage;
+            }
+          </script>
+          
+      </div>
+    
+
+    <script src="/static/js/script.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/static/css/visualizer.css">
+  <link rel="icon" type="image/png" href="/static/logo-no-bckgrnd.png" sizes="64x64"/>
+  <title>Visualizer</title>
+</head>
+<body>
+
+  <div class="button-container">
+
+    <button class="button gauche" onclick="location.href='/preparation'">←</button>
+
+    <button class="button droite" onclick="location.href='/choose-interact'">INTERAGIR</button>
+  </div> 
+
+  <div class="algorithm-container">
+
+    <div class="first-algo">
+    
+      <div class="algo-video">
+        {{ premiere_algo_template | safe }} <!-- Vidéo HTML du premier algorithme -->
+      </div>
+
+      <p class="arrow" >&#10159;</p>
+
+      <div class="algo-explanation">
+        <ul>
+          {% for element in explications_1 %}
+          <li><strong>{{ element | safe }}</strong></li>
+          <br>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+
+    <button class="button3D" onclick="location.href='/preparation/visualizer-3D'"><strong>3D</strong></button>
+
+    <a class="button compare-btn" href="#popup-comp"> + </a>
+
+    <div id="popup-comp" class="overlay">
+
+      <div class="popup">
+
+        <a class="close" href="#">&times;</a>
+
+        <div class="popup-compare-btn">
+
+          <form action="/preparation/visualizer-2" method="post" onsubmit="loading_2()">
+
+          <button type="submit" name="tri2" value="selection">Tri par sélection</button> 
+          <button type="submit" name="tri2" value="insertion">Tri par insertion</button>
+          <button type="submit" name="tri2" value="bulles">Tri à bulles</button>
+          <button type="submit" name="tri2" value="cocktail">Tri cocktail</button> 
+          <button type="submit" name="tri2" value="tas">Tri par tas</button> 
+          <button type="submit" name="tri2" value="pigeon">Tri pigeon</button> 
+          <button type="submit" name="tri2" value="fusion">Tri fusion</button> 
+          <button type="submit" name="tri2" value="rapide">Tri rapide</button> 
+          <button type="submit" name="tri2" value="arborescent">Tri arborescent</button>
+          <button type="submit" name="tri2" value="peigne">Tri à peigne</button>
+          <button type="submit" name="tri2" value="pair-impair">Tri pair-impair</button> 
+          <button type="submit" name="tri2" value="shell">Tri de Shell</button> 
+
+          </form>
+
+        </div>
+
+        
+      </div>
+    </div>
+    
+    <div id="loader-2" class="dots-bars-5"></div>
+
+  </div>
+
+  <script src="/static/js/script.js"></script>
+
+</body>
+</html>

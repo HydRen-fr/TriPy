@@ -1,0 +1,126 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	background-color: #ffffff;
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100px;
+	background-color: #fff;
+}
+
+.button {
+	width: 50%;
+	height: 100%;
+	border: none;
+	border-radius: 0;
+	font-size: 38px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	background-color: #0072c6;
+	cursor: pointer;
+	transition: all 0.3s ease-out;
+}
+
+.button:hover {
+	background-color: #005ea2;
+}
+
+.button:active {
+	background-color: #005ea2;
+}
+
+.button:focus {
+	outline: none;
+}
+
+.button.gauche {
+	background-color: #002244;
+}
+
+.button.gauche:hover {
+	background-color: #00162a;
+}
+
+.button.droite {
+	background-color: #00b3b3;
+	font-size: 80px;
+}
+
+.button.droite:hover {
+	background-color: #008c8c;
+}
+
+
+.graph-container {
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 80px); /* La hauteur de l'écran moins la hauteur des boutons */
+}
+
+.graph-container .interactive-input {
+	display: flex;
+	flex-direction: column;
+	height: 50%;
+	align-items: center;
+}
+
+.graph-container .interactive-input p {
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 8px;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.graph-container .interactive-input textarea {
+	margin: auto;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px;
+	width: 80%;
+	height: 150px;
+	resize: vertical;
+	text-align: left;
+	border: 2px solid #000000;
+	border-radius: 10px;
+	outline: none;
+	background-color: #f1f1f1;
+}
+
+  
+
+.buttonGraph {
+	display: block;
+	margin: auto;
+	position: absolute;
+	top: 39%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    width: 74px;
+    height: 74px;
+    background-color: rgb(0, 8, 116);
+    color: #ffffff;
+    border-radius: 10px;
+	font-size: 55px;
+	border: 3px solid #00162a;
+	transition: all 0.3s ease-out;
+  }
+
+  .buttonGraph:hover {
+	background-color: #00162a;
+  }
+
+.graph-container .execution-time-graph {
+	display: flex;
+	flex-direction: row;
+	height: 50%;
+	margin-top: 82px;
+}
