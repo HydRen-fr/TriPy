@@ -9,7 +9,7 @@
 
 ### Fichiers de liaisons entre les technologies de visualisation Python et l'interface humain-ordinateur
     
-**app.py** : Importe les technologies de visualisation Matplotlib et Plotly de TriPy qui sont utilisées pour générer les visualisations et les résultats. C'est le code principal de l'application. Il utilise le framework Flask pour gérer les routes et les vues de l'application et renvoyer le tout aux templates HTML avec les bonnes données.
+**app.py** : Ce fichier importe les technologies de visualisation Matplotlib et Plotly de TriPy qui sont utilisées pour générer les visualisations et les résultats. C'est le code principal de l'application. Il utilise le framework Flask pour gérer les routes et les vues de l'application et renvoyer le tout aux templates HTML avec les bonnes données.
 
 **config.py** : Ce fichier contient les variables globales qu'on souhaite conserver entre les différentes routes du fichier *app.py*. Ce fichier est réinitialisé à l'appel de la fonction *reset_global_variables()*.
 
@@ -40,6 +40,6 @@ Pour prendre correctement en main les classes du fichier *algorithmes.py*, veill
 
 ---
 
-Notez que les technologies de visualisation Python du projet sont **commentées dans le code source**. Seul le fonctionnement des algorithmes des classes de *algorithmes.py* n'est pas décrit car c'est déjà fait dans *plotly_graph.py*.
+Notez que les Fichiers Python du projet sont **commentés dans le code source**. Seul le fonctionnement des algorithmes des classes de *algorithmes.py* n'est pas décrit car c'est déjà fait dans *plotly_graph.py*.
 
     

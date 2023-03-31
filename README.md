@@ -12,7 +12,7 @@ Le site de **TriPy** est accessible [ici](https://tripy.pythonanywhere.com).
 
 # Contribuer au projet
 
-Toutes les idées sont bonnes à prendre ! **Tout le monde est invité à contribuer au projet TriPy**.
+Toutes les idées sont bonnes à prendre ! **Tout le monde est invité à contribuer au projet TriPy**. ![Codez avec nous !](/doc/codons_ensemble.png)
 
 Si vous le souhaitez, voici comment vous pouvez le faire :
 
@@ -29,6 +29,8 @@ Une fois le projet installé, il peut être exécuté à partir de la ligne de c
 Cela lancera l'interface utilisateur de TriPy sur votre navigateur Web par défaut sur le [localhost](http://localhost:5000/).
 
 Vous pouvez maintenant commencer à travailler sur le projet et proposer **vos modifications** en créant des Pull Requests sur GitHub.
+
+Pour vous aider à **prendre en main** TriPy, une documentation est disponible dans le fichier **doc** de ce répertoire.
 
 N'oubliez pas de consulter le fichier **TODO.md** pour plus d'informations sur la façon de **contribuer au projet**.
 
