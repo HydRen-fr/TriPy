@@ -38,7 +38,7 @@ Pour prendre correctement en main les classes du fichier *algorithmes.py*, veill
 
 Voici un exemple de template HTML avec l'utilisation de Jinja2 en vert et les élements correspondants imagés :
 
-![Template](template_exemple.png)
+![Template](template_exemple.jpg)
 
 **static** : Ce dossier contient des fichiers statiques tels que des fichiers CSS et des images utilisées pour personnaliser l'apparence de l'application.
 
