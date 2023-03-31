@@ -12,7 +12,9 @@ Le site de **TriPy** est accessible [ici](https://tripy.pythonanywhere.com).
 
 # Contribuer au projet
 
-Toutes les idées sont bonnes à prendre ! **Tout le monde est invité à contribuer au projet TriPy**. ![Codez avec nous !](/doc/codons_ensemble.png)
+Toutes les idées sont bonnes à prendre ! **Tout le monde est invité à contribuer au projet TriPy**. 
+
+<img alt="Codons ensemble !" src="/doc/codons_ensemble.png" width="400" height="400">
 
 Si vous le souhaitez, voici comment vous pouvez le faire :
 
@@ -30,7 +32,7 @@ Cela lancera l'interface utilisateur de TriPy sur votre navigateur Web par défa
 
 Vous pouvez maintenant commencer à travailler sur le projet et proposer **vos modifications** en créant des Pull Requests sur GitHub.
 
-Pour vous aider à **prendre en main** TriPy, une documentation est disponible dans le fichier **doc** de ce répertoire.
+Pour vous aider à **prendre en main** TriPy, une documentation est disponible dans le dossier **doc** de ce répertoire.
 
 N'oubliez pas de consulter le fichier **TODO.md** pour plus d'informations sur la façon de **contribuer au projet**.
 
