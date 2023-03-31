@@ -36,6 +36,10 @@ Pour prendre correctement en main les classes du fichier *algorithmes.py*, veill
 
 **templates** : Ce dossier contient les fichiers HTML qui définissent les vues de l'application qu'on retrouve dans *app.py*. Les fichiers HTML contiennent des balises Jinja pour inclure des éléments dynamiques tels que des graphiques Matplotlib et des résultats d'algorithmes.
 
+Voici un exemple de template HTML avec l'utilisation de Jinja2 en vert et les élements correspondants imagés :
+
+![Template](template_exemple.png)
+
 **static** : Ce dossier contient des fichiers statiques tels que des fichiers CSS et des images utilisées pour personnaliser l'apparence de l'application.
 
 ---
