@@ -2,7 +2,7 @@
 
 <p float="left">
   <img src="/sources/static/logo-no-bckgrnd.png" />
-  <img src="/doc/accueil.png" width="400" height="400" /> 
+  <img src="/doc/accueil.png" width="400" height="290" /> 
 </p>
 
 ![Image Demo](/doc/demo_pic.png)
