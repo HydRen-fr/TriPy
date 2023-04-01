@@ -1,6 +1,10 @@
 # TriPy
 
-![Logo TriPy](/sources/static/logo-no-bckgrnd.png)
+<p float="left">
+  <img src="/sources/static/logo-no-bckgrnd.png" />
+  <img src="/doc/accueil.png" /> 
+</p>
+
 ![Image Demo](/doc/demo_pic.png)
 
 **TriPy** est un projet de **visualisation d'algorithmes de tri** en **Python**. Il utilise la bibliothèque Matplotlib pour générer des animations et les présenter sur un site Web réalisé avec le framework Python **Flask**.
