@@ -22,6 +22,14 @@
 
 **traceurs_graphique.py** : Ce fichier utilise la bibliothèque Matplotlib pour créer des graphiques en 2D et 3D à partir des données fournies par les algorithmes. Les graphiques créés avec cette bibliothèque sont ensuite utilisés pour créer des animations à l'aide de la bibliothèque Celluloid. Ainsi les vidéos sont converties en HTML et envoyées grâce à *app.py* sous forme de template Jinja aux fichiers HTML de manière dynamique.
 
+Les classes fonctionnent de la manière suivante :
+
+- Copie des données pour ne pas altérer les données originales qu'on peut réutiliser plus tard ainsi
+- Initialisation de la classe TraceurGraphique
+- Modification des données avec l'algorithme de tri et appel de *self.traceur.dessiner(donnees, premiere_highlight, deuxieme_highlight)* afin de prendre des captures d'écran avec Celluloid
+- On anime la vidéo avec les captures d'écran de Celluloid et on la stocke sous forme de vidéo HTML5
+- Répetition avec la 3D
+
 Pour prendre correctement en main les classes du fichier *algorithmes.py*, veillez à appeler au bon moment *self.traceur.dessiner(donnees, premiere_highlight, deuxieme_highlight)*. Il faut que ces appels soient effectués de manière à représenter fidèlement le tri des données. Si vous appelez *self.traceur.dessiner(donnees, premiere_highlight, deuxieme_highlight)* après avoir modifié les données, la première image de la visualisation Celluloid donnera sur des données déjà modifiées. Voici des exemples de code pour rendre ça plus clair :
 
 ![Bon](ordre_bon.png)

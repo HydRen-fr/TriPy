@@ -9,9 +9,9 @@ function data_switch() {
         toggle.innerHTML = "<strong>Générer aléatoirement</strong>";
         values.style.display = "block";
         values.required = true;
-        values.pattern = "^(?:1[0-8][0-9]|[1-9][0-9]|[1-9]|190)(?: (?:1[0-8][0-9]|[1-9][0-9]|[1-9]|190)){0,29} ?$";
+        values.pattern = "^(?:1[0-8][0-9]|[1-9][0-9]|[1-9]|190)(?: (?:1[0-8][0-9]|[1-9][0-9]|[1-9]|190)){0,15} ?$";
         length.style.display = "none";
-        text.innerHTML = "Entiers séparés par des espaces | entre 1 et 190 | limité à 30 nombres";
+        text.innerHTML = "Entiers séparés par des espaces | entre 1 et 190 | limité à 16 nombres";
         text.style.fontSize = "30px";
         document.getElementById("choix").value = "2";
         
@@ -21,8 +21,8 @@ function data_switch() {
         values.required = false;
         values.pattern = ".*";
         length.style.display = "block";
-        text.innerHTML = "Taille des données";
-        text.style.fontSize = "35px";
+        text.innerHTML = "Taille des données (voir le bouton vert à gauche pour choisir les nombres)";
+        text.style.fontSize = "26px";
         document.getElementById("choix").value = "1";
     }
 }

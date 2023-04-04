@@ -78,10 +78,10 @@ def tri():
 
         # Recherche de tous les motifs O(...) dans les éléments
         regex = r"O\([^)]+\)"
-        match = re.search(regex, explications_1[0])
+        match = re.search(regex, explications_1[2])
         algo_complexite = match.group()
 
-        explications_1[0] = re.sub(regex, r"<span class='highlight'>\g<0> <img/> </span>", explications_1[0])
+        explications_1[2] = re.sub(regex, r"<span class='highlight'>\g<0> <img/> </span>", explications_1[2])
 
     return render_template('visualiser/visualizer.html', premiere_algo_template=premiere_algo_template, 
                            explications_1=explications_1)
@@ -105,10 +105,14 @@ def tri_2():
 
         # Recherche de tous les motifs O(...) dans les éléments
         regex = r"O\([^)]+\)"
-        match = re.search(regex, explications_2[0])
+        match = re.search(regex, explications_2[2])
         algo_2_complexite = match.group()
         
-        explications_2[0] = re.sub(regex, r"<span class='highlight'>\g<0> <img/> </span>", explications_2[0])
+        explications_2[2] = re.sub(regex, r"<span class='highlight'>\g<0> <img/> </span>", explications_2[2])
+
+        # Supprime les définitions entre parenthèses car elles sont déjà données dans le premier texte
+        explications_2[3] = re.sub(r"\([^()]*\)", "", explications_2[3])
+        explications_2[4] = re.sub(r"\([^()]*\)", "", explications_2[4])
 
     return render_template('visualiser/visualizer-2.html', premiere_algo_template=premiere_algo_template, 
                            deuxieme_algo_template=deuxieme_algo_template,

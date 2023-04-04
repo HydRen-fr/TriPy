@@ -46,62 +46,64 @@ def donnees_aleatoires(longueur):
     random.shuffle(donnees)
     return donnees
 
-
-# FONCTIONNEMENT DES CLASSES
-# Initialisation de la classe TraceurGraphique pour afficher les graphes
-# Tri du tableau avec l'algorithme qui correspond à la classe
-# On récupère la vidéo à afficher
-# Répetition avec la 3D
-
-
-class TriInsertion():
+# CLASSES
+    
+class TriPigeon():
     def __init__(self, donnees, vitesse):
         donnees_copy_3d = copy.deepcopy(donnees)
         donnees_copy_2d = copy.deepcopy(donnees)
-
-        self.traceur = TraceurGraphique("Tri par insertion") 
-        self.tri_insertion(donnees_copy_2d)
-        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n^2)", 
-                            "Stable", 
-                            "Efficace sur des petites et moyennes tailles de données", 
-                            "Insertion de chaque élément à sa place dans la liste triée"]
         
-        self.traceur3D = TraceurGraphique3D("Tri par insertion 3D") 
-        self.tri_insertion_3d(donnees_copy_3d)
+        self.traceur = TraceurGraphique("Tri pigeon") 
+        self.tri_pigeon(donnees_copy_2d)
+        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
+        self.infos_liste = ["Algorithme de type non-comparatif et limité aux nombres entiers",
+                            "Efficace pour les petites/très petites tailles de données : répartit chaque élément dans des trous en fonction de sa valeur, puis les rassemble en ordre croissant", 
+                            "Complexité : O(n + 2^k) avec k l'écart entre la plus grande et la plus petite valeur proportionellement à n", 
+                            "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+                            "Pas en place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
+        
+        self.traceur3D = TraceurGraphique3D("Tri pigeon 3D") 
+        self.tri_pigeon_3d(donnees_copy_3d)
         self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
 
-    def tri_insertion(self, donnees):
-        for i in range(len(donnees)):
-            temp = donnees[i]
-            j = i - 1
-            while j >= 0 and temp < donnees[j]:
-                self.traceur.dessiner(donnees, j+1, j)
+    def tri_pigeon(self, donnees):
+        min_value, max_value = min(donnees), max(donnees)
+        range_values = max_value - min_value + 1
+        pigeon = [0] * range_values
 
-                donnees[j+1] = donnees[j]
-                donnees[j] = temp
+        for value in donnees:
+            pigeon[value - min_value] += 1
 
-                self.traceur.dessiner(donnees, j, j+1)
+        index = 0
+        for i in range(range_values):
+            while pigeon[i] > 0:
+                self.traceur.dessiner(donnees, index)
+                donnees[index] = i + min_value
+                self.traceur.dessiner(donnees, index)
+                pigeon[i] -= 1
+                index += 1
+        
+        return donnees
 
-                j -= 1
+    def tri_pigeon_3d(self, donnees):
+        min_value, max_value = min(donnees), max(donnees)
+        range_values = max_value - min_value + 1
+        pigeon = [0] * range_values
 
+        for value in donnees:
+            pigeon[value - min_value] += 1
+
+        index = 0
+        for i in range(range_values):
+            while pigeon[i] > 0:
+                self.traceur3D.dessiner3D(donnees, index)
+                donnees[index] = i + min_value
+                self.traceur3D.dessiner3D(donnees, index)
+                pigeon[i] -= 1
+                index += 1
+        
         return donnees
     
-    def tri_insertion_3d(self, donnees):
-        for i in range(len(donnees)):
-            temp = donnees[i]
-            j = i - 1
-            while j >= 0 and temp < donnees[j]:
-                self.traceur3D.dessiner3D(donnees, j+1, j)
-
-                donnees[j+1] = donnees[j]
-                donnees[j] = temp
-
-                self.traceur3D.dessiner3D(donnees, j, j+1)
-
-                j -= 1
-
-        return donnees
 
 class TriBulles():
     def __init__(self, donnees, vitesse):
@@ -111,10 +113,11 @@ class TriBulles():
         self.traceur = TraceurGraphique("Tri à bulles") 
         self.tri_bulles(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n^2)",
-                            "Stable",
-                            "Algorithme simple mais peu efficace sur de grandes tailles de données",
-                            "Comparaison et échange successifs des éléments adjacents de la liste"]
+        self.infos_liste = ["Algorithme à but pédagogique simple mais très peu efficace sur de grandes tailles de données",
+                            "Comparaison et échange successifs des éléments adjacents de la liste du début à la fin",
+                            "Complexité en moyenne : O(n^2)",
+                            "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)",
+                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
 
         self.traceur3D = TraceurGraphique3D("Tri à bulles 3D") 
         self.tri_bulles_3d(donnees_copy_3d)
@@ -149,10 +152,11 @@ class TriSelection():
         self.traceur = TraceurGraphique("Tri par sélection") 
         self.tri_selection(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n^2)", 
-                            "Non-stable", 
-                            "Algorithme simple mais peu efficace sur de grandes tailles de données", 
-                            "Cherche le minimum à chaque étape pour l'échanger avec l'élément en position courante"]
+        self.infos_liste = ["Algorithme lent mais simple à utiliser sur des données de quelques dizaines d'éléments au plus", 
+                            "Consiste à parcourir plusieurs fois le tableau et à placer le plus petit élément à sa place, puis le 2e, puis le 3e...",
+                            "Complexité en moyenne : O(n^2)", 
+                            "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
         
         self.traceur3D = TraceurGraphique3D("Tri par sélection 3D") 
         self.tri_selection_3d(donnees_copy_3d)
@@ -184,6 +188,202 @@ class TriSelection():
 
     
     
+class TriInsertion():
+    def __init__(self, donnees, vitesse):
+        donnees_copy_3d = copy.deepcopy(donnees)
+        donnees_copy_2d = copy.deepcopy(donnees)
+
+        self.traceur = TraceurGraphique("Tri par insertion") 
+        self.tri_insertion(donnees_copy_2d)
+        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
+        self.infos_liste = ["Algorithme lent parmi les moyennement rapides",
+                            "Efficace sur des petites et moyennes tailles de données, souvent utilisé pour les cartes à jouer : insertion de chaque élément à sa place dans la liste triée", 
+                            "Complexité en moyenne : O(n^2)", 
+                            "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)",
+                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
+        
+        self.traceur3D = TraceurGraphique3D("Tri par insertion 3D") 
+        self.tri_insertion_3d(donnees_copy_3d)
+        self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
+
+    def tri_insertion(self, donnees):
+        for i in range(len(donnees)):
+            temp = donnees[i]
+            j = i - 1
+            while j >= 0 and temp < donnees[j]:
+                
+                self.traceur.dessiner(donnees, j+1, j)
+
+                donnees[j+1] = donnees[j]
+                donnees[j] = temp
+
+                self.traceur.dessiner(donnees, j, j+1)
+
+                j -= 1
+
+        return donnees
+    
+    def tri_insertion_3d(self, donnees):
+        for i in range(len(donnees)):
+            temp = donnees[i]
+            j = i - 1
+            while j >= 0 and temp < donnees[j]:
+                self.traceur3D.dessiner3D(donnees, j+1, j)
+
+                donnees[j+1] = donnees[j]
+                donnees[j] = temp
+
+                self.traceur3D.dessiner3D(donnees, j, j+1)
+
+                j -= 1
+
+        return donnees
+
+
+class TriPairImpair():
+    def __init__(self, donnees, vitesse):
+        donnees_copy_2d = copy.deepcopy(donnees)
+        donnees_copy_3d = copy.deepcopy(donnees)
+
+        self.traceur = TraceurGraphique("Tri pair-impair") 
+        self.tri_pair_impair(donnees_copy_2d)
+        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
+        self.infos_liste = ["Algorithme lent parmi les moyennement rapides",
+                            "Variante du tri à bulles qui parcourt la liste en alternant les comparaisons entre éléments de rang pair et impair",
+                            "Complexité en moyenne : O(n^2)",
+                            "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
+        
+        self.traceur3D = TraceurGraphique3D("Tri pair-impair 3D") 
+        self.tri_pair_impair_3d(donnees_copy_3d)
+        self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
+
+    def tri_pair_impair(self, donnees):
+        trie = False
+        while not trie:
+            trie = True
+            for i in range(0, len(donnees)-1, 2):
+                if donnees[i] > donnees[i+1]:
+                    self.traceur.dessiner(donnees, i, i+1)
+                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
+                    self.traceur.dessiner(donnees, i+1, i)
+                    trie = False
+            for i in range(1, len(donnees)-1, 2):
+                if donnees[i] > donnees[i+1]:
+                    self.traceur.dessiner(donnees, i, i+1)
+                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
+                    self.traceur.dessiner(donnees, i+1, i)
+                    trie = False
+
+        return donnees
+    
+    def tri_pair_impair_3d(self, donnees):
+        trie = False
+        while not trie:
+            trie = True
+            for i in range(0, len(donnees)-1, 2):
+                if donnees[i] > donnees[i+1]:
+                    self.traceur3D.dessiner3D(donnees, i, i+1)
+                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
+                    self.traceur3D.dessiner3D(donnees, i+1, i)
+                    trie = False
+            for i in range(1, len(donnees)-1, 2):
+                if donnees[i] > donnees[i+1]:
+                    self.traceur3D.dessiner3D(donnees, i, i+1)
+                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
+                    self.traceur3D.dessiner3D(donnees, i+1, i)
+                    trie = False
+
+        return donnees
+
+
+class TriCocktail():
+    def __init__(self, donnees, vitesse):
+        donnees_copy_3d = copy.deepcopy(donnees)
+        donnees_copy_2d = copy.deepcopy(donnees)
+
+        self.traceur = TraceurGraphique("Tri cocktail") 
+        self.tri_cocktail(donnees_copy_2d)
+        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
+        self.infos_liste = ["Algorithme lent parmi les moyennement rapides",
+                            "Variante du tri à bulles qui parcourt la liste dans les deux sens", 
+                            "Complexité en moyenne : O(n^2)", 
+                            "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
+        
+        self.traceur3D = TraceurGraphique3D("Tri Cocktail 3D") 
+        self.tri_cocktail_3d(donnees_copy_3d)
+        self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
+
+    def tri_cocktail(self, donnees):
+        n = len(donnees)
+        permutation = True
+        debut = 0
+        fin = n-1
+
+        while permutation:
+            permutation = False
+
+            for i in range(debut, fin):
+                if donnees[i] > donnees[i+1]:
+                    self.traceur.dessiner(donnees, i, i+1)
+                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
+                    self.traceur.dessiner(donnees, i+1, i)
+                    permutation = True
+
+            if not permutation:
+                break
+
+            permutation = False
+
+            fin -= 1
+
+            for i in range(fin-1, debut-1, -1):
+                if donnees[i] > donnees[i+1]:
+                    self.traceur.dessiner(donnees, i, i+1)
+                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
+                    self.traceur.dessiner(donnees, i+1, i)
+                    permutation = True
+
+            debut += 1
+
+        return donnees
+    
+    def tri_cocktail_3d(self, donnees):
+        n = len(donnees)
+        permutation = True
+        debut = 0
+        fin = n-1
+
+        while permutation:
+            permutation = False
+
+            for i in range(debut, fin):
+                if donnees[i] > donnees[i+1]:
+                    self.traceur3D.dessiner3D(donnees, i, i+1)
+                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
+                    self.traceur3D.dessiner3D(donnees, i+1, i)
+                    permutation = True
+
+            if not permutation:
+                break
+
+            permutation = False
+
+            fin -= 1
+
+            for i in range(fin-1, debut-1, -1):
+                if donnees[i] > donnees[i+1]:
+                    self.traceur3D.dessiner3D(donnees, i, i+1)
+                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
+                    self.traceur3D.dessiner3D(donnees, i+1, i)
+                    permutation = True
+
+            debut += 1
+
+        return donnees
+    
+
 class TriFusion():
     def __init__(self, donnees, vitesse):
         donnees_copy_3d = copy.deepcopy(donnees)
@@ -192,10 +392,11 @@ class TriFusion():
         self.traceur = TraceurGraphique("Tri fusion")
         self.tri_fusion(donnees_copy_2d, 0, len(donnees_copy_2d)-1)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n log n)", 
-                            "Stable", 
-                            "Algorithme rapide pour les grandes tailles de données", 
-                            "Divise la liste en deux, trie chaque moitié, puis les fusionne"]
+        self.infos_liste = ["Algorithme moyennement rapide et efficace sur les grandes tailles de données", 
+                            "Repose sur le principe « diviser pour régner » : divise la liste en deux, trie chaque moitié, puis les fusionne",
+                            "Complexité : O(n log n)", 
+                            "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+                            "Pas en place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
         
         self.traceur3D = TraceurGraphique3D("Tri fusion 3D")
         self.tri_fusion_3d(donnees_copy_3d, 0, len(donnees_copy_3d)-1)
@@ -284,10 +485,11 @@ class TriRapide():
         self.traceur = TraceurGraphique("Tri rapide")
         self.tri_rapide(donnees_copy_2d, 0, len(donnees_copy_2d) - 1)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n log n)", 
-                            "Non-stable", 
-                            "Algorithme rapide pour les grandes tailles de données", 
-                            "Partitionne la liste en deux autour d'un pivot et trie les deux parties de manière récursive"]
+        self.infos_liste = ["Algorithme moyennement rapide", 
+                            "Repose sur le principe « diviser pour régner » : partitionne la liste en deux autour d'un pivot et trie les deux parties de manière récursive",
+                            "Complexité en moyenne : O(n log n)", 
+                            "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
         
         self.traceur3D = TraceurGraphique3D("Tri rapide 3D") 
         self.tri_rapide_3d(donnees_copy_3d, 0, len(donnees_copy_3d) - 1)
@@ -359,10 +561,12 @@ class TriParTas():
         self.traceur = TraceurGraphique("Tri par tas")
         self.tri_par_tas(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n log n)", 
-                            "Non-stable", 
-                            "Permet d'extraire le minimum ou le maximum rapidement", 
-                            "Représente la liste à trier sous forme d'arbre binaire"]
+        self.infos_liste = ["Algorithme moyennement rapide", 
+                            "Amélioration du tri par sélection : utilise une structure de tas",
+                            "Complexité : O(n log n)", 
+                            "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
+
         
         self.traceur3D = TraceurGraphique3D("Tri par tas 3D") 
         self.tri_par_tas_3d(donnees_copy_3d)
@@ -452,10 +656,11 @@ class TriArborescent():
         self.traceur = TraceurGraphique("Tri arborescent") 
         self.tri_arborescent(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n log n)", 
-                            "Stable", 
-                            "Utilise une structure d'arbre pour trier la liste", 
-                            "Très efficace pour les grandes tailles de données"]
+        self.infos_liste = ["Algorithme moyennement rapide",
+                            "Insère les éléments un à un dans un arbre binaire de recherche, puis lit l'arbre selon un parcours en profondeur", 
+                            "Complexité en moyenne : O(n log n)", 
+                            "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+                            "Pas en place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
         
         self.traceur3D = TraceurGraphique3D("Tri arborescent 3D") 
         self.tri_arborescent_3d(donnees_copy_3d)
@@ -550,10 +755,11 @@ class TriPeigne():
         self.traceur = TraceurGraphique("Tri à peigne")
         self.tri_peigne(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n^2)",
-                            "Non-stable",
-                            "Variante du tri à bulles qui parcourt la liste avec un espacement plus grand",
-                            "Permet de déplacer plus rapidement les éléments qui sont loin de leur position finale"]
+        self.infos_liste = ["Algorithme moyennement rapide",
+                            "Variante plus efficace du tri à bulles, ne comparant pas uniquement des éléments consécutifs : permet de déplacer plus rapidement les éléments qui sont loin de leur position finale",
+                            "Complexité en moyenne : O(n log n)",
+                            "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)",
+                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
         
         self.traceur3D = TraceurGraphique3D("Tri à peigne 3D") 
         self.tri_peigne_3d(donnees_copy_3d)
@@ -590,200 +796,6 @@ class TriPeigne():
                     self.traceur3D.dessiner3D(donnees, j, i)
 
         return donnees
-
-
-class TriPairImpair():
-    def __init__(self, donnees, vitesse):
-        donnees_copy_2d = copy.deepcopy(donnees)
-        donnees_copy_3d = copy.deepcopy(donnees)
-
-        self.traceur = TraceurGraphique("Tri pair-impair") 
-        self.tri_pair_impair(donnees_copy_2d)
-        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n^2)",
-                            "Stable", 
-                            "Variante du tri à bulles qui parcourt la liste en alternant les comparaisons entre éléments de rang pair et impair", 
-                            "Permet de trier la liste plus rapidement dans certains cas"]
-        
-        self.traceur3D = TraceurGraphique3D("Tri pair-impair 3D") 
-        self.tri_pair_impair_3d(donnees_copy_3d)
-        self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
-
-    def tri_pair_impair(self, donnees):
-        trie = False
-        while not trie:
-            trie = True
-            for i in range(0, len(donnees)-1, 2):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur.dessiner(donnees, i, i+1)
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    trie = False
-            for i in range(1, len(donnees)-1, 2):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur.dessiner(donnees, i, i+1)
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    trie = False
-
-        return donnees
-    
-    def tri_pair_impair_3d(self, donnees):
-        trie = False
-        while not trie:
-            trie = True
-            for i in range(0, len(donnees)-1, 2):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur3D.dessiner3D(donnees, i, i+1)
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    trie = False
-            for i in range(1, len(donnees)-1, 2):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur3D.dessiner3D(donnees, i, i+1)
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    trie = False
-
-        return donnees
-
-
-class TriCocktail():
-    def __init__(self, donnees, vitesse):
-        donnees_copy_3d = copy.deepcopy(donnees)
-        donnees_copy_2d = copy.deepcopy(donnees)
-
-        self.traceur = TraceurGraphique("Tri cocktail") 
-        self.tri_cocktail(donnees_copy_2d)
-        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n^2)", 
-                            "Stable", 
-                            "Variante du tri à bulles qui parcourt la liste dans les deux sens", 
-                            "Permet d'éviter de remonter une grande série de valeurs"]
-        
-        self.traceur3D = TraceurGraphique3D("Tri Cocktail 3D") 
-        self.tri_cocktail_3d(donnees_copy_3d)
-        self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
-
-    def tri_cocktail(self, donnees):
-        n = len(donnees)
-        permutation = True
-        debut = 0
-        fin = n-1
-
-        while permutation:
-            permutation = False
-
-            for i in range(debut, fin):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur.dessiner(donnees, i, i+1)
-
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    permutation = True
-
-            if not permutation:
-                break
-
-            permutation = False
-
-            fin -= 1
-
-            for i in range(fin-1, debut-1, -1):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur.dessiner(donnees, i, i+1)
-
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    permutation = True
-
-            debut += 1
-
-        return donnees
-    
-    def tri_cocktail_3d(self, donnees):
-        n = len(donnees)
-        permutation = True
-        debut = 0
-        fin = n-1
-
-        while permutation:
-            permutation = False
-
-            for i in range(debut, fin):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur3D.dessiner3D(donnees, i, i+1)
-
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    permutation = True
-
-            if not permutation:
-                break
-
-            permutation = False
-
-            fin -= 1
-
-            for i in range(fin-1, debut-1, -1):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur3D.dessiner3D(donnees, i, i+1)
-
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    permutation = True
-
-            debut += 1
-
-        return donnees
-
-
-class TriPigeon():
-    def __init__(self, donnees, vitesse):
-        donnees_copy_3d = copy.deepcopy(donnees)
-        donnees_copy_2d = copy.deepcopy(donnees)
-        
-        self.traceur = TraceurGraphique("Tri pigeon") 
-        self.tri_pigeon(donnees_copy_2d)
-        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n + 2^k) avec k l'écart entre la plus grande et la plus petite valeur", 
-                            "Stable", 
-                            "Efficace pour les petites/très petites tailles de données", 
-                            "Algorithme de type non-comparatif et limité aux nombres entiers"]
-        
-        self.traceur3D = TraceurGraphique3D("Tri pigeon 3D") 
-        self.tri_pigeon_3d(donnees_copy_3d)
-        self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
-
-    def tri_pigeon(self, donnees):
-        min_value, max_value = min(donnees), max(donnees)
-        range_values = max_value - min_value + 1
-        pigeon = [0] * range_values
-
-        for value in donnees:
-            pigeon[value - min_value] += 1
-
-        index = 0
-        for i in range(range_values):
-            while pigeon[i] > 0:
-                self.traceur.dessiner(donnees, index)
-                donnees[index] = i + min_value
-                self.traceur.dessiner(donnees, index)
-                pigeon[i] -= 1
-                index += 1
-        
-        return donnees
-
-    def tri_pigeon_3d(self, donnees):
-        min_value, max_value = min(donnees), max(donnees)
-        range_values = max_value - min_value + 1
-        pigeon = [0] * range_values
-
-        for value in donnees:
-            pigeon[value - min_value] += 1
-
-        index = 0
-        for i in range(range_values):
-            while pigeon[i] > 0:
-                self.traceur3D.dessiner3D(donnees, index)
-                donnees[index] = i + min_value
-                self.traceur3D.dessiner3D(donnees, index)
-                pigeon[i] -= 1
-                index += 1
-        
-        return donnees
     
 class TriShell():
     def __init__(self, donnees, vitesse):
@@ -793,10 +805,11 @@ class TriShell():
         self.traceur = TraceurGraphique("Tri de Shell")
         self.tri_shell(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Complexité : O(n^2) dans le pire des cas, mais peut être amélioré avec différentes séquences de pas", 
-                            "Non-stable", 
-                            "Variante du tri par insertion", 
-                            "L'algorithme utilise des pas (gaps) qui diminuent à chaque étape pour trier des sous-listes du tableau"]
+        self.infos_liste = ["Algorithme moyennement rapide", 
+                            "Variante du tri par insertion : utilise des gaps qui diminuent à chaque étape pour trier des sous-listes du tableau",
+                            "Complexité en moyenne : O(n log^2 n) dans le pire des cas, mais peut être amélioré avec différentes séquences de pas", 
+                            "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
         
         self.traceur3D = TraceurGraphique3D("Tri de Shell 3D") 
         self.tri_shell_3d(donnees_copy_3d)
@@ -839,6 +852,10 @@ class TriShell():
             h = h // 3
 
         return donnees
+
+
+
+
 
 
 

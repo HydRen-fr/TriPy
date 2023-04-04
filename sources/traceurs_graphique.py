@@ -119,7 +119,8 @@ def plot_complexite(complexite):
         'O(n^2)': n**2,
         'O(n^3)': n**3,
         'O(2^n)': 2**n,
-        'O(n + 2^k)': n + 2**k
+        'O(n + 2^k)': n + 2**k,
+        'O(n log^2 n)': n * np.log(n)**2
     }
 
     f = grands_o[complexite]
