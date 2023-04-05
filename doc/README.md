@@ -18,7 +18,7 @@
 
 ### Technologies de visualisation Python
 
-**algorithmes.py** : Ce fichier implémente les 12 algorithmes visualisables sur TriPy. Chaque algorithme a sa propre classe qui grâce aux classes de *traceurs_graphique.py* génère des visualisations.
+**algorithmes.py** : Ce fichier implémente les 9 algorithmes visualisables sur TriPy. Chaque algorithme a sa propre classe qui grâce aux classes de *traceurs_graphique.py* génère des visualisations.
 
 **traceurs_graphique.py** : Ce fichier utilise la bibliothèque Matplotlib pour créer des graphiques en 2D et 3D à partir des données fournies par les algorithmes. Les graphiques créés avec cette bibliothèque sont ensuite utilisés pour créer des animations à l'aide de la bibliothèque Celluloid. Ainsi les vidéos sont converties en HTML et envoyées grâce à *app.py* sous forme de template Jinja aux fichiers HTML de manière dynamique.
 
@@ -35,7 +35,7 @@ Pour prendre correctement en main les classes du fichier *algorithmes.py*, veill
 ![Bon](ordre_bon.png)
 ![Mauvais](ordre_mauvais.png)
 
-**plotly_graph.py** : Ce fichier utilise la bibliothèque Plotly. Il prend en entrée une liste de nombres et renvoie le temps d'exécution des 12 algorithmes disponibles sur TriPy. Chacun des 12 algorithmes a son propre code dans le fichier, indépendant de celui de *algorithmes.py* qui est reservé à la visualisation et la création d'une vidéo avec *traceurs_graphique.py*.
+**plotly_graph.py** : Ce fichier utilise la bibliothèque Plotly. Il prend en entrée une liste de nombres et renvoie le temps d'exécution des 9 algorithmes disponibles sur TriPy. Chacun des 9 algorithmes a son propre code dans le fichier, indépendant de celui de *algorithmes.py* qui est reservé à la visualisation et la création d'une vidéo avec *traceurs_graphique.py*.
 
 
 
@@ -47,6 +47,8 @@ Pour prendre correctement en main les classes du fichier *algorithmes.py*, veill
 Voici un exemple de template HTML avec l'utilisation de Jinja2 en vert et les élements correspondants imagés :
 
 ![Template](template_exemple.jpg)
+
+Dans Jinja2, "safe" signifie que le code est sans danger et peut être interprété en code HTML et CSS pour ainsi réaliser des actions sur la page. Cela permet de styliser facilement le rendu de la liste, il suffit de modifier les items python de *self.infos_liste* avec un tag style.
 
 **static** : Ce dossier contient des fichiers statiques tels que des fichiers CSS et des images utilisées pour personnaliser l'apparence de l'application.
 

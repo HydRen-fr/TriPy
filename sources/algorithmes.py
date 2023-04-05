@@ -1,4 +1,4 @@
-# FICHIER QUI CONTIENT LES CLASSES DES 12 ALGORITHMES PROPOSES A VISUALISER AINSI QUE QUELQUES FONCTIONS LIEES AUX DONNEES ET APP.PY
+# FICHIER QUI CONTIENT LES CLASSES DES 9 ALGORITHMES PROPOSES A VISUALISER AINSI QUE QUELQUES FONCTIONS LIEES AUX DONNEES ET APP.PY
 
 import random
 from traceurs_graphique import TraceurGraphique, TraceurGraphique3D
@@ -15,20 +15,14 @@ def creer(nom_algo, donnees, vitesse):
         algo_class = TriBulles(donnees, vitesse)
     elif nom_algo == 'cocktail':
         algo_class = TriCocktail(donnees, vitesse)
-    elif nom_algo == 'tas':
-        algo_class = TriParTas(donnees, vitesse)
     elif nom_algo == 'pigeon':
         algo_class = TriPigeon(donnees, vitesse)
-    elif nom_algo == 'fusion':
-        algo_class = TriFusion(donnees, vitesse)
     elif nom_algo == 'rapide':
         algo_class = TriRapide(donnees, vitesse)
     elif nom_algo == 'arborescent':
         algo_class = TriArborescent(donnees, vitesse)
     elif nom_algo == 'peigne':
         algo_class = TriPeigne(donnees, vitesse)
-    elif nom_algo == 'pair-impair':
-        algo_class = TriPairImpair(donnees, vitesse)
     elif nom_algo == 'shell':
         algo_class = TriShell(donnees, vitesse)
 
@@ -240,63 +234,6 @@ class TriInsertion():
         return donnees
 
 
-class TriPairImpair():
-    def __init__(self, donnees, vitesse):
-        donnees_copy_2d = copy.deepcopy(donnees)
-        donnees_copy_3d = copy.deepcopy(donnees)
-
-        self.traceur = TraceurGraphique("Tri pair-impair") 
-        self.tri_pair_impair(donnees_copy_2d)
-        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["<span style='color: red';>Principe :</span> variante du tri à bulles qui parcourt la liste en alternant les comparaisons entre éléments de rang pair et impair",
-                            "Moyen",
-                            "Complexité en moyenne : O(n^2)",
-                            "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
-                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
-        
-        self.traceur3D = TraceurGraphique3D("Tri pair-impair 3D") 
-        self.tri_pair_impair_3d(donnees_copy_3d)
-        self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
-
-    def tri_pair_impair(self, donnees):
-        trie = False
-        while not trie:
-            trie = True
-            for i in range(0, len(donnees)-1, 2):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur.dessiner(donnees, i, i+1)
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    self.traceur.dessiner(donnees, i+1, i)
-                    trie = False
-            for i in range(1, len(donnees)-1, 2):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur.dessiner(donnees, i, i+1)
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    self.traceur.dessiner(donnees, i+1, i)
-                    trie = False
-
-        return donnees
-    
-    def tri_pair_impair_3d(self, donnees):
-        trie = False
-        while not trie:
-            trie = True
-            for i in range(0, len(donnees)-1, 2):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur3D.dessiner3D(donnees, i, i+1)
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    self.traceur3D.dessiner3D(donnees, i+1, i)
-                    trie = False
-            for i in range(1, len(donnees)-1, 2):
-                if donnees[i] > donnees[i+1]:
-                    self.traceur3D.dessiner3D(donnees, i, i+1)
-                    donnees[i], donnees[i+1] = donnees[i+1], donnees[i]
-                    self.traceur3D.dessiner3D(donnees, i+1, i)
-                    trie = False
-
-        return donnees
-
-
 class TriCocktail():
     def __init__(self, donnees, vitesse):
         donnees_copy_3d = copy.deepcopy(donnees)
@@ -382,99 +319,7 @@ class TriCocktail():
             debut += 1
 
         return donnees
-    
 
-class TriFusion():
-    def __init__(self, donnees, vitesse):
-        donnees_copy_3d = copy.deepcopy(donnees)
-        donnees_copy_2d = copy.deepcopy(donnees)
-
-        self.traceur = TraceurGraphique("Tri fusion")
-        self.tri_fusion(donnees_copy_2d, 0, len(donnees_copy_2d)-1)
-        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["<span style='color: red';>Principe :</span> repose sur le principe « diviser pour régner », on divise la liste en deux, trie chaque moitié, puis les fusionne",
-                            "Rapide", 
-                            "Complexité : O(n log n)", 
-                            "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
-                            "Pas en place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
-        
-        self.traceur3D = TraceurGraphique3D("Tri fusion 3D")
-        self.tri_fusion_3d(donnees_copy_3d, 0, len(donnees_copy_3d)-1)
-        self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
-
-    def tri_fusion(self, donnees, debut, fin):
-        if debut < fin:
-            milieu = (debut+fin) // 2
-
-            self.tri_fusion(donnees, debut, milieu)
-
-            self.tri_fusion(donnees, milieu+1, fin)
-
-            i = debut
-            j = milieu + 1
-            temp = []
-
-            while i <= milieu and j <= fin:
-                if donnees[i] < donnees[j]:
-                    temp.append(donnees[i])
-                    i += 1
-                else:
-                    temp.append(donnees[j])
-                    j += 1
-
-            while i <= milieu:
-                temp.append(donnees[i])
-                i += 1
-
-            while j <= fin:
-                temp.append(donnees[j])
-                j += 1
-            
-            self.traceur.dessiner(donnees, debut, fin)
-
-            for i, valeur in enumerate(temp):
-                donnees[debut + i] = valeur
-
-            self.traceur.dessiner(donnees, debut, fin)
-
-        return donnees
-    
-    def tri_fusion_3d(self, donnees, debut, fin):
-        if debut < fin:
-            milieu = (debut+fin) // 2
-
-            self.tri_fusion_3d(donnees, debut, milieu)
-
-            self.tri_fusion_3d(donnees, milieu+1, fin)
-
-            i = debut
-            j = milieu + 1
-            temp = []
-
-            while i <= milieu and j <= fin:
-                if donnees[i] < donnees[j]:
-                    temp.append(donnees[i])
-                    i += 1
-                else:
-                    temp.append(donnees[j])
-                    j += 1
-
-            while i <= milieu:
-                temp.append(donnees[i])
-                i += 1
-
-            while j <= fin:
-                temp.append(donnees[j])
-                j += 1
-            
-            self.traceur3D.dessiner3D(donnees, debut, fin)
-
-            for i, valeur in enumerate(temp):
-                donnees[debut + i] = valeur
-
-            self.traceur3D.dessiner3D(donnees, debut, fin)
-
-        return donnees
 
 
 class TriRapide():
@@ -552,100 +397,6 @@ class TriRapide():
             self.traceur3D.dessiner3D(donnees, i, j)
 
 
-
-class TriParTas():
-    def __init__(self, donnees, vitesse):
-        donnees_copy_3d = copy.deepcopy(donnees)
-        donnees_copy_2d = copy.deepcopy(donnees)
-
-        self.traceur = TraceurGraphique("Tri par tas")
-        self.tri_par_tas(donnees_copy_2d)
-        self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["<span style='color: red';>Principe :</span> amélioration du tri par sélection avec une structure de tas",
-                            "Rapide", 
-                            "Complexité : O(n log n)", 
-                            "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
-                            "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
-
-        
-        self.traceur3D = TraceurGraphique3D("Tri par tas 3D") 
-        self.tri_par_tas_3d(donnees_copy_3d)
-        self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
-
-    def tri_par_tas(self, donnees):
-
-        def echanger(donnees, i, j):
-            """
-            Échange les éléments des indices i et j dans le tableau de données
-            """
-            donnees[i], donnees[j] = donnees[j], donnees[i]
-
-        def entasser_max(donnees, n, i):
-            """
-            Entasse le sous-arbre enraciné à l'indice i du tableau de données
-            pour s'assurer qu'il satisfait la propriété du tas max.
-            """
-            racine = i
-            gauche = 2 * i + 1
-            droite = 2 * i + 2
-
-            if gauche < n and donnees[gauche] > donnees[racine]:
-                racine = gauche
-
-            if droite < n and donnees[droite] > donnees[racine]:
-                racine = droite
-
-            if racine != i:
-                self.traceur.dessiner(donnees, racine, i)
-                echanger(donnees, i, racine)
-                self.traceur.dessiner(donnees, i, racine)
-                entasser_max(donnees, n, racine)
-
-        n = len(donnees)
-
-        for i in range(n // 2 - 1, -1, -1):
-            entasser_max(donnees, n, i)
-
-        for i in range(n - 1, 0, -1):
-            echanger(donnees, 0, i)
-            self.traceur.dessiner(donnees, 0, i)
-            entasser_max(donnees, i, 0)
-
-        return donnees
-    
-    def tri_par_tas_3d(self, donnees):
-
-        def echanger_3d(donnees, i, j):
-            donnees[i], donnees[j] = donnees[j], donnees[i]
-
-        def entasser_max_3d(donnees, n, i):
-            racine = i
-            gauche = 2 * i + 1
-            droite = 2 * i + 2
-
-            if gauche < n and donnees[gauche] > donnees[racine]:
-                racine = gauche
-
-            if droite < n and donnees[droite] > donnees[racine]:
-                racine = droite
-
-            if racine != i:
-                self.traceur3D.dessiner3D(donnees, racine, i)
-                echanger_3d(donnees, i, racine)
-                self.traceur3D.dessiner3D(donnees, i, racine)
-                entasser_max_3d(donnees, n, racine)
-
-        n = len(donnees)
-
-        for i in range(n // 2 - 1, -1, -1):
-            entasser_max_3d(donnees, n, i)
-
-        for i in range(n - 1, 0, -1):
-            echanger_3d(donnees, 0, i)
-            self.traceur3D.dessiner3D(donnees, 0, i)
-            entasser_max_3d(donnees, i, 0)
-
-        return donnees
     
 
 class TriArborescent():

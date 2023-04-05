@@ -72,41 +72,6 @@ def tri_cocktail(liste):
     return liste
 
 
-def tri_tas(liste):
-    # Fonction récursive pour entasser un sous-arbre en un tas
-    def entasser(liste, n, i):
-        plus_grand = i
-        # Calculer les indices des enfants gauche et droite de l'élément i
-        gauche = 2 * i + 1
-        droite = 2 * i + 2
- 
-        if gauche < n and liste[i] < liste[gauche]:
-            plus_grand = gauche
-
-        if droite < n and liste[plus_grand] < liste[droite]:
-            plus_grand = droite
- 
-        # Si le plus grand élément n'est pas la racine, échanger la racine avec le plus grand élément
-        if plus_grand != i:
-            liste[i], liste[plus_grand] = liste[plus_grand], liste[i]
- 
-            # Récursivement entasser le sous-arbre affecté par l'échange
-            entasser(liste, n, plus_grand)
- 
-    n = len(liste)
- 
-    # Construire un tas en partant de la fin de la liste et en appelant la fonction entasser pour chaque élément
-    for i in range(n, -1, -1):
-        entasser(liste, n, i)
- 
-    # Extraire les éléments du tas un par un et les placer à leur position correcte dans la liste triée
-    for i in range(n - 1, 0, -1):
-        liste[i], liste[0] = liste[0], liste[i]
-        entasser(liste, i, 0)
-
-    return liste
-
-
 def tri_pigeon(liste):
     # Trouver la valeur maximale et minimale dans la liste
     min_value, max_value = min(liste), max(liste)
@@ -128,36 +93,6 @@ def tri_pigeon(liste):
             index += 1
     
     return liste
-
-
-def tri_fusion(liste):
-    if len(liste) <= 1:
-        return liste
-    
-    # Diviser la liste en deux sous-listes
-    milieu_index = len(liste) // 2
-    gauche_liste = liste[:milieu_index]
-    droite_liste = liste[milieu_index:]
-    
-    # Récursivement trier les sous-listes
-    gauche_liste = tri_fusion(gauche_liste)
-    droite_liste = tri_fusion(droite_liste)
-    
-    # Fusionner les sous-listes triées
-    liste_triee = []
-    gauche_index, droite_index = 0, 0
-    while gauche_index < len(gauche_liste) and droite_index < len(droite_liste):
-        if gauche_liste[gauche_index] < droite_liste[droite_index]:
-            liste_triee.append(gauche_liste[gauche_index])
-            gauche_index += 1
-        else:
-            liste_triee.append(droite_liste[droite_index])
-            droite_index += 1
-    
-    liste_triee += gauche_liste[gauche_index:]
-    liste_triee += droite_liste[droite_index:]
-    
-    return liste_triee
 
 
 
@@ -235,22 +170,6 @@ def tri_a_peigne(liste):
                 swaps = True  # Indiquer qu'il y a eu un échange
 
     return liste
- 
-
-def tri_pair_impair(liste):
-    trie = False
-    while not trie:
-        trie = True
-        for i in range(0, len(liste) - 1, 2):  # Parcours des éléments pairs
-            if liste[i] > liste[i+1]:
-                liste[i], liste[i+1] = liste[i+1], liste[i]
-                trie = False
-        for i in range(1, len(liste) - 1, 2):  # Parcours des éléments impairs
-            if liste[i] > liste[i+1]:
-                liste[i], liste[i+1] = liste[i+1], liste[i]
-                trie = False
-
-    return liste
 
 
 
@@ -287,33 +206,42 @@ def plot_exec_temps(liste_entiers):
     temps_tri_insertion = mesurer_temps_execution(tri_insertion, liste_entiers)
     temps_tri_bulles = mesurer_temps_execution(tri_bulles, liste_entiers)
     temps_tri_cocktail = mesurer_temps_execution(tri_cocktail, liste_entiers)
-    temps_tri_tas = mesurer_temps_execution(tri_tas, liste_entiers)
     temps_tri_pigeon = mesurer_temps_execution(tri_pigeon, liste_entiers)
-    temps_tri_fusion = mesurer_temps_execution(tri_fusion, liste_entiers)
     temps_tri_rapide = mesurer_temps_execution(tri_rapide, liste_entiers)
     temps_tri_arborescent = mesurer_temps_execution(tri_arborescent, liste_entiers)
     temps_tri_a_peigne = mesurer_temps_execution(tri_a_peigne, liste_entiers)
-    temps_tri_pair_impair = mesurer_temps_execution(tri_pair_impair, liste_entiers)
     temps_tri_de_shell = mesurer_temps_execution(tri_shell, liste_entiers)
 
-    # Créer le graphique de barres
-    data = [go.Bar(
+    # Tri des temps d'exécution dans l'ordre croissant
+    # Créer une liste de tuples (étiquette, temps) et trier les tuples par temps
+    temps_croissants = sorted([
+        ('Tri par sélection', temps_tri_selection),
+        ('Tri par insertion', temps_tri_insertion),
+        ('Tri à bulles', temps_tri_bulles),
+        ('Tri cocktail', temps_tri_cocktail),
+        ('Tri pigeon', temps_tri_pigeon),
+        ('Tri rapide', temps_tri_rapide),
+        ('Tri arborescent', temps_tri_arborescent),
+        ('Tri à peigne', temps_tri_a_peigne),
+        ('Tri de Shell', temps_tri_de_shell)
+    ], key=lambda x: x[1])
 
-    x=['Tri par sélection', 'Tri par insertion', 'Tri à bulles', 'Tri cocktail', 'Tri par tas',
-    'Tri pigeon', 'Tri fusion', 'Tri rapide', 'Tri arborescent', 'Tri à peigne',
-    'Tri pair-impair', 'Tri de Shell'],
+    # Extraire les étiquettes triées et les temps triés dans des listes séparées
+    x = [item[0] for item in temps_croissants]
+    y = [item[1] for item in temps_croissants]
 
-    y=[temps_tri_selection, temps_tri_insertion, temps_tri_bulles, temps_tri_cocktail, temps_tri_tas,
-    temps_tri_pigeon, temps_tri_fusion, temps_tri_rapide, temps_tri_arborescent, temps_tri_a_peigne,
-    temps_tri_pair_impair, temps_tri_de_shell])]
-    
+    # Créer le graphique de barres avec les étiquettes et les temps triés
+    data = [go.Bar(x=x, y=y)]
+
     layout = go.Layout(
-                title='Temps d\'exécution des algorithmes',
-                xaxis={'title': 'Algorithmes','fixedrange':True},
-                yaxis={'title': 'Temps d\'exécution','fixedrange':True},
-                width=1900,  
-                height=490
-            )
+        title='Temps d\'exécution des algorithmes',
+        xaxis={'title': 'Algorithmes', 'fixedrange': True},
+        yaxis={'title': 'Temps d\'exécution', 'fixedrange': True},
+        width=1900,
+        height=490
+    )
+
     fig = go.Figure(data=data, layout=layout)
 
     return fig
+
