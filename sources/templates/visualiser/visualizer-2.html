@@ -29,10 +29,14 @@
       <div class="algo-explanation">
         <ul>
           {% for element in explications_1 %}
-          <li><strong>{{ element | safe }}</strong></li>
-          <br>
+            {% if loop.index <= 3 %}
+              <li><strong>{{ element | safe }}</strong></li>
+            {% else %}
+              <li>{{ element | safe }}</li>
+            {% endif %}
+            <br>
           {% endfor %}
-        </ul>
+        </ul>    
       </div>
     </div>
 
@@ -49,10 +53,14 @@
       <div class="algo-explanation">
         <ul>
           {% for element in explications_2 %}
-          <li><strong>{{ element | safe }}</strong></li>
-          <br>
+            {% if loop.index <= 3 %}
+              <li><strong>{{ element | safe }}</strong></li>
+            {% else %}
+              <li>{{ element | safe }}</li>
+            {% endif %}
+            <br>
           {% endfor %}
-        </ul>
+        </ul>    
       </div>
     </div>
     

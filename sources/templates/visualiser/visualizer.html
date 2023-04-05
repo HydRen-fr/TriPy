@@ -27,17 +27,21 @@
       <div class="algo-explanation">
         <ul>
           {% for element in explications_1 %}
-          <li><strong>{{ element | safe }}</strong></li>
-          <br>
+            {% if loop.index <= 3 %}
+              <li><strong>{{ element | safe }}</strong></li>
+            {% else %}
+              <li>{{ element | safe }}</li>
+            {% endif %}
+            <br>
           {% endfor %}
-        </ul>
+        </ul>    
       </div>
 
     </div>
 
     <button class="button3D" onclick="location.href='/preparation/visualizer-3D'"><strong>3D</strong></button>
 
-    <a class="button compare-btn" href="#popup-comp"> + </a>
+    <a class="button compare-btn" href="#popup-comp"> Comparer </a>
 
     <div id="popup-comp" class="overlay">
 

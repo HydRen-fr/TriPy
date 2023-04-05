@@ -1,5 +1,4 @@
-- Problèmes de compatibilité CSS avec les versions de navigateurs et les tailles d'écran --> interface défigurée et/ou problèmes de fonctionnalités reportés ci-dessous
-- Bug sur certaines versions de Firefox avec .highlight:hover dans visualizer.css et visualizer-2.css
+- Problèmes de compatibilité CSS avec les versions de navigateurs et les tailles d'écran --> interface défigurée
 
 INTERAGIR --> en développpement
 

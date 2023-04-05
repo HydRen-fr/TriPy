@@ -56,8 +56,8 @@ class TriPigeon():
         self.traceur = TraceurGraphique("Tri pigeon") 
         self.tri_pigeon(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme de type non-comparatif et limité aux nombres entiers",
-                            "Efficace pour les petites/très petites tailles de données : répartit chaque élément dans des trous en fonction de sa valeur, puis les rassemble en ordre croissant", 
+        self.infos_liste = ["<span style='color: red';>Principe :</span> répartit chaque élément dans des trous en fonction de sa valeur, puis les rassemble en ordre croissant (non-comparatif)",
+                            "Lent", 
                             "Complexité : O(n + 2^k) avec k l'écart entre la plus grande et la plus petite valeur proportionellement à n", 
                             "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "Pas en place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -113,8 +113,8 @@ class TriBulles():
         self.traceur = TraceurGraphique("Tri à bulles") 
         self.tri_bulles(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme à but pédagogique simple mais très peu efficace sur de grandes tailles de données",
-                            "Comparaison et échange successifs des éléments adjacents de la liste du début à la fin",
+        self.infos_liste = ["<span style='color: red';>Principe :</span> comparaison et échange successifs des éléments adjacents de la liste du début à la fin",
+                            "But pédagogique",
                             "Complexité en moyenne : O(n^2)",
                             "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)",
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -152,8 +152,8 @@ class TriSelection():
         self.traceur = TraceurGraphique("Tri par sélection") 
         self.tri_selection(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme lent mais simple à utiliser sur des données de quelques dizaines d'éléments au plus", 
-                            "Consiste à parcourir plusieurs fois le tableau et à placer le plus petit élément à sa place, puis le 2e, puis le 3e...",
+        self.infos_liste = ["<span style='color: red';>Principe :</span> consiste à parcourir plusieurs fois le tableau et à placer le plus petit élément à sa place, puis le 2e, puis le 3e...",
+                            "Lent", 
                             "Complexité en moyenne : O(n^2)", 
                             "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -196,8 +196,8 @@ class TriInsertion():
         self.traceur = TraceurGraphique("Tri par insertion") 
         self.tri_insertion(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme lent parmi les moyennement rapides",
-                            "Efficace sur des petites et moyennes tailles de données, souvent utilisé pour les cartes à jouer : insertion de chaque élément à sa place dans la liste triée", 
+        self.infos_liste = ["<span style='color: red';>Principe :</span> souvent utilisé pour les cartes à jouer, insertion de chaque élément à sa place dans la liste triée",
+                            "Moyen",
                             "Complexité en moyenne : O(n^2)", 
                             "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)",
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -248,8 +248,8 @@ class TriPairImpair():
         self.traceur = TraceurGraphique("Tri pair-impair") 
         self.tri_pair_impair(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme lent parmi les moyennement rapides",
-                            "Variante du tri à bulles qui parcourt la liste en alternant les comparaisons entre éléments de rang pair et impair",
+        self.infos_liste = ["<span style='color: red';>Principe :</span> variante du tri à bulles qui parcourt la liste en alternant les comparaisons entre éléments de rang pair et impair",
+                            "Moyen",
                             "Complexité en moyenne : O(n^2)",
                             "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -305,8 +305,8 @@ class TriCocktail():
         self.traceur = TraceurGraphique("Tri cocktail") 
         self.tri_cocktail(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme lent parmi les moyennement rapides",
-                            "Variante du tri à bulles qui parcourt la liste dans les deux sens", 
+        self.infos_liste = ["<span style='color: red';>Principe :</span> variante du tri à bulles qui parcourt la liste dans les deux sens", 
+                            "Moyen",
                             "Complexité en moyenne : O(n^2)", 
                             "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -392,8 +392,8 @@ class TriFusion():
         self.traceur = TraceurGraphique("Tri fusion")
         self.tri_fusion(donnees_copy_2d, 0, len(donnees_copy_2d)-1)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme moyennement rapide et efficace sur les grandes tailles de données", 
-                            "Repose sur le principe « diviser pour régner » : divise la liste en deux, trie chaque moitié, puis les fusionne",
+        self.infos_liste = ["<span style='color: red';>Principe :</span> repose sur le principe « diviser pour régner », on divise la liste en deux, trie chaque moitié, puis les fusionne",
+                            "Rapide", 
                             "Complexité : O(n log n)", 
                             "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "Pas en place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -485,8 +485,8 @@ class TriRapide():
         self.traceur = TraceurGraphique("Tri rapide")
         self.tri_rapide(donnees_copy_2d, 0, len(donnees_copy_2d) - 1)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme moyennement rapide", 
-                            "Repose sur le principe « diviser pour régner » : partitionne la liste en deux autour d'un pivot et trie les deux parties de manière récursive",
+        self.infos_liste = ["<span style='color: red';>Principe :</span> repose sur le principe « diviser pour régner », on partitionne la liste en deux autour d'un pivot et trie les deux parties de manière récursive",
+                            "Rapide", 
                             "Complexité en moyenne : O(n log n)", 
                             "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -561,8 +561,8 @@ class TriParTas():
         self.traceur = TraceurGraphique("Tri par tas")
         self.tri_par_tas(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme moyennement rapide", 
-                            "Amélioration du tri par sélection : utilise une structure de tas",
+        self.infos_liste = ["<span style='color: red';>Principe :</span> amélioration du tri par sélection avec une structure de tas",
+                            "Rapide", 
                             "Complexité : O(n log n)", 
                             "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -656,8 +656,8 @@ class TriArborescent():
         self.traceur = TraceurGraphique("Tri arborescent") 
         self.tri_arborescent(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme moyennement rapide",
-                            "Insère les éléments un à un dans un arbre binaire de recherche, puis lit l'arbre selon un parcours en profondeur", 
+        self.infos_liste = ["<span style='color: red';>Principe :</span> insère les éléments un à un dans un arbre binaire de recherche, puis lit l'arbre selon un parcours en profondeur", 
+                            "Rapide",
                             "Complexité en moyenne : O(n log n)", 
                             "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "Pas en place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -755,8 +755,8 @@ class TriPeigne():
         self.traceur = TraceurGraphique("Tri à peigne")
         self.tri_peigne(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme moyennement rapide",
-                            "Variante plus efficace du tri à bulles, ne comparant pas uniquement des éléments consécutifs : permet de déplacer plus rapidement les éléments qui sont loin de leur position finale",
+        self.infos_liste = ["<span style='color: red';>Principe :</span> variante plus efficace du tri à bulles, ne comparant pas uniquement des éléments consécutifs, cela permet de déplacer plus rapidement les éléments qui sont loin de leur position finale",
+                            "Rapide",
                             "Complexité en moyenne : O(n log n)",
                             "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)",
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
@@ -805,8 +805,8 @@ class TriShell():
         self.traceur = TraceurGraphique("Tri de Shell")
         self.tri_shell(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["Algorithme moyennement rapide", 
-                            "Variante du tri par insertion : utilise des gaps qui diminuent à chaque étape pour trier des sous-listes du tableau",
+        self.infos_liste = ["<span style='color: red';>Principe :</span> variante du tri par insertion qui utilise des gaps qui diminuent à chaque étape pour trier des sous-listes du tableau",
+                            "Rapide",
                             "Complexité en moyenne : O(n log^2 n) dans le pire des cas, mais peut être amélioré avec différentes séquences de pas", 
                             "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]

@@ -90,7 +90,7 @@ body {
   .first-algo .algo-explanation {
     margin-top: 45px;
 	flex-basis: 50%;
-	font-size: 23px;
+	font-size: 21px;
   }
 
   .highlight {
@@ -168,5 +168,5 @@ body {
 .compare-algo .algo-explanation {
     margin-top: 45px;
 	flex-basis: 50%;
-	font-size: 23px;
+	font-size: 21px;
 }

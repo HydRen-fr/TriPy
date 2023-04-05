@@ -27,6 +27,8 @@ function data_switch() {
     }
 }
 
+// -------------------------------------------------------------------------
+
 // Cette fonction est appelée lors du chargement de la page de visualisation, elle cache le contenu et affiche l'icône de chargement
 function loading() {
     document.getElementById("loader").style.display = "block";
@@ -40,6 +42,8 @@ function loading_2() {
     document.getElementById("popup-comp").style.display = "none";
     document.querySelector(".compare-btn").style.display = "none";
 }
+
+// -------------------------------------------------------------------------
 
 window.onload = function() {
   var modal = document.getElementById("monModal");
@@ -73,28 +77,40 @@ var currentPage = 0;
 
 // Affichage de la page actuelle
 function showPage(pageIndex) {
-  // Cacher toutes les pages
-  for (var i = 0; i < pages.length; i++) {
-    pages[i].classList.remove('active');
-  }
-  // Afficher la page actuelle
-  pages[pageIndex].classList.add('active');
-  // Mettre à jour le numéro de page actuelle
-  currentPage = pageIndex;
+// Cacher toutes les pages
+for (var i = 0; i < pages.length; i++) {
+pages[i].classList.remove('active');
+}
+// Afficher la page actuelle
+pages[pageIndex].classList.add('active');
+// Mettre à jour le numéro de page actuelle
+currentPage = pageIndex;
+// Vérifier si la page actuelle est la première
+if (currentPage === 0) {
+prevButton.style.display = 'none';
+} else {
+prevButton.style.display = 'block';
+}
+// Vérifier si la page actuelle est la dernière
+if (currentPage === pages.length - 1) {
+nextButton.style.display = 'none';
+} else {
+nextButton.style.display = 'block';
+}
 }
 
 // Navigation vers la page précédente
 function prevPage() {
-  if (currentPage > 0) {
-    showPage(currentPage - 1);
-  }
+if (currentPage > 0) {
+showPage(currentPage - 1);
+}
 }
 
 // Navigation vers la page suivante
 function nextPage() {
-  if (currentPage < pages.length - 1) {
-    showPage(currentPage + 1);
-  }
+if (currentPage < pages.length - 1) {
+showPage(currentPage + 1);
+}
 }
 
 // Ajout des événements de clic pour les boutons de navigation
@@ -103,17 +119,24 @@ nextButton.addEventListener('click', nextPage);
 
 // Ajout des événements de touche pour la navigation avec les touches fléchées
 document.addEventListener('keydown', function(event) {
-  if (event.keyCode === 37) {
-    // Touche gauche
-    prevPage();
-  } else if (event.keyCode === 39) {
-    // Touche droite
-    nextPage();
-  }
+if (event.keyCode === 37) {
+// Touche gauche
+prevPage();
+} else if (event.keyCode === 39) {
+// Touche droite
+nextPage();
+}
 });
 
+// Cacher le bouton prev à la première page
+prevButton.style.display = 'none';
 // Affichage de la première page au chargement de la page
 showPage(0);
+
+
+
+// -------------------------------------------------------------------------
+
 
 
 // Test RegEx de textarea car ce n'est pas input donc pas de pattern possible
