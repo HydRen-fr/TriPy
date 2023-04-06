@@ -331,7 +331,7 @@ class TriGnome():
         self.tri_gnome(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
         self.infos_liste = ["<span style='color: red';>Principe :</span> similaire au tri par insertion, sauf que, au lieu d'insérer directement l'élément à sa bonne place, l'algorithme effectue une série de permutations", 
-                            "Lent",
+                            "Moyen",
                             "Complexité en moyenne : O(n^2)", 
                             "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
