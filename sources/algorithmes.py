@@ -17,10 +17,10 @@ def creer(nom_algo, donnees, vitesse):
         algo_class = TriCocktail(donnees, vitesse)
     elif nom_algo == 'pigeon':
         algo_class = TriPigeon(donnees, vitesse)
-    elif nom_algo == 'rapide':
-        algo_class = TriRapide(donnees, vitesse)
-    elif nom_algo == 'arborescent':
-        algo_class = TriArborescent(donnees, vitesse)
+    elif nom_algo == 'gnome':
+        algo_class = TriGnome(donnees, vitesse)
+    elif nom_algo == 'comptage':
+        algo_class = TriComptage(donnees, vitesse)
     elif nom_algo == 'peigne':
         algo_class = TriPeigne(donnees, vitesse)
     elif nom_algo == 'shell':
@@ -248,7 +248,7 @@ class TriCocktail():
                             "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
         
-        self.traceur3D = TraceurGraphique3D("Tri Cocktail 3D") 
+        self.traceur3D = TraceurGraphique3D("Tri cocktail 3D") 
         self.tri_cocktail_3d(donnees_copy_3d)
         self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
 
@@ -322,180 +322,100 @@ class TriCocktail():
 
 
 
-class TriRapide():
+class TriGnome():
     def __init__(self, donnees, vitesse):
         donnees_copy_3d = copy.deepcopy(donnees)
         donnees_copy_2d = copy.deepcopy(donnees)
 
-        self.traceur = TraceurGraphique("Tri rapide")
-        self.tri_rapide(donnees_copy_2d, 0, len(donnees_copy_2d) - 1)
+        self.traceur = TraceurGraphique("Tri gnome") 
+        self.tri_gnome(donnees_copy_2d)
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["<span style='color: red';>Principe :</span> repose sur le principe « diviser pour régner », on partitionne la liste en deux autour d'un pivot et trie les deux parties de manière récursive",
-                            "Rapide", 
-                            "Complexité en moyenne : O(n log n)", 
-                            "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+        self.infos_liste = ["<span style='color: red';>Principe :</span> similaire au tri par insertion, sauf que, au lieu d'insérer directement l'élément à sa bonne place, l'algorithme effectue une série de permutations", 
+                            "Lent",
+                            "Complexité en moyenne : O(n^2)", 
+                            "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "En place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
         
-        self.traceur3D = TraceurGraphique3D("Tri rapide 3D") 
-        self.tri_rapide_3d(donnees_copy_3d, 0, len(donnees_copy_3d) - 1)
+        self.traceur3D = TraceurGraphique3D("Tri gnome 3D") 
+        self.tri_gnome_3d(donnees_copy_3d)
         self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
 
-    def tri_rapide(self, donnees, debut, fin):
-        if debut < fin:
-            pivot = self.partitionner(donnees, debut, fin)
-
-            self.tri_rapide(donnees, debut, pivot)
-            self.tri_rapide(donnees, pivot + 1, fin)
-            
-    def partitionner(self, donnees, debut, fin):
-        pivot = donnees[debut]
-        i = debut - 1
-        j = fin + 1
-
-        while True:
-            i += 1
-            while donnees[i] < pivot:
-                i += 1
-
-            j -= 1
-            while donnees[j] > pivot:
-                j -= 1
-
-            if i >= j:
-                return j
-
-            self.traceur.dessiner(donnees, j, i)
-            donnees[i], donnees[j] = donnees[j], donnees[i]
-            self.traceur.dessiner(donnees, i, j)
+    def tri_gnome(self, donnees):
+        index = 0
+        n = len(donnees)
+        while index < n:
+            if index == 0:
+                index = index + 1
+            self.traceur.dessiner(donnees, index, index - 1)
+            if donnees[index] >= donnees[index - 1]:
+                index = index + 1
+            else:
+                donnees[index], donnees[index - 1] = donnees[index - 1], donnees[index]
+                self.traceur.dessiner(donnees, index - 1, index)
+                index = index - 1
+        return donnees
     
-    def tri_rapide_3d(self, donnees, debut, fin):
-        if debut < fin:
-            pivot = self.partitionner_3d(donnees, debut, fin)
-
-            self.tri_rapide_3d(donnees, debut, pivot)
-            self.tri_rapide_3d(donnees, pivot + 1, fin)
-            
-    def partitionner_3d(self, donnees, debut, fin):
-        pivot = donnees[debut]
-        i = debut - 1
-        j = fin + 1
-
-        while True:
-            i += 1
-            while donnees[i] < pivot:
-                i += 1
-
-            j -= 1
-            while donnees[j] > pivot:
-                j -= 1
-
-            if i >= j:
-                return j
-
-            self.traceur3D.dessiner3D(donnees, j, i)
-            donnees[i], donnees[j] = donnees[j], donnees[i]
-            self.traceur3D.dessiner3D(donnees, i, j)
-
-
+    def tri_gnome_3d(self, donnees):
+        index = 0
+        n = len(donnees)
+        while index < n:
+            if index == 0:
+                index = index + 1
+            self.traceur3D.dessiner3D(donnees, index, index - 1)
+            if donnees[index] >= donnees[index - 1]:
+                index = index + 1
+            else:
+                donnees[index], donnees[index - 1] = donnees[index - 1], donnees[index]
+                self.traceur3D.dessiner3D(donnees, index - 1, index)
+                index = index - 1
+        return donnees
     
 
-class TriArborescent():
+class TriComptage():
     def __init__(self, donnees, vitesse):
         donnees_copy_3d = copy.deepcopy(donnees)
         donnees_copy_2d = copy.deepcopy(donnees)
 
-        self.traceur = TraceurGraphique("Tri arborescent") 
-        self.tri_arborescent(donnees_copy_2d)
+        self.traceur = TraceurGraphique("Tri comptage") 
+        donnees_copy_2d = self.tri_comptage(donnees_copy_2d) # Ne modifie pas directement les donnees sinon
         self.video = self.traceur.animer(donnees_copy_2d, vitesse)
-        self.infos_liste = ["<span style='color: red';>Principe :</span> insère les éléments un à un dans un arbre binaire de recherche, puis lit l'arbre selon un parcours en profondeur", 
-                            "Rapide",
-                            "Complexité en moyenne : O(n log n)", 
-                            "Non-stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
+        self.infos_liste = ["<span style='color: red';>Principe :</span> utilisation d'une seconde liste de même longueur que la liste à trier", 
+                            "Moyen",
+                            "Complexité : O(n)", 
+                            "Stable (un tri est dit stable s'il préserve l'ordre initial des éléments égaux)", 
                             "Pas en place (un tri est dit en place s'il n'utilise qu'un nombre très limité de variables et qu'il modifie directement la structure qu'il est en train de trier)"]
         
-        self.traceur3D = TraceurGraphique3D("Tri arborescent 3D") 
-        self.tri_arborescent_3d(donnees_copy_3d)
+        self.traceur3D = TraceurGraphique3D("Tri comptage 3D") 
+        donnees_copy_3d = self.tri_comptage_3d(donnees_copy_3d)
         self.video3D = self.traceur3D.animer3D(donnees_copy_3d, vitesse)
 
-    def tri_arborescent(self, donnees):
+    def tri_comptage(self, donnees):
+            liste = [0] * (max(donnees) + 1)
+            resultat = []
+            self.traceur.dessiner(donnees, len(donnees) - 1)
+            for element in donnees:
+                liste[element] += 1
 
-        def tri_recursif(donnees, i, taille):
-            """
-            Trie récursivement les sous-arbres en partant de la racine i
-            """
-            gauche = 2 * i + 1
-            droite = 2 * i + 2
-            max = i
+            for index, element in enumerate(liste):
+                if element != 0:
+                    resultat.append(index)
+                    self.traceur.dessiner(resultat, len(resultat) - 1)
 
-            if gauche < taille and donnees[gauche] > donnees[max]:
-                max = gauche
-
-            if droite < taille and donnees[droite] > donnees[max]:
-                max = droite
-
-            if max != i:
-                self.traceur.dessiner(donnees, max, i)
-
-                donnees[i], donnees[max] = donnees[max], donnees[i]
-
-                self.traceur.dessiner(donnees, i, max)
-
-                tri_recursif(donnees, max, taille)
-
-        n = len(donnees)
-
-        for i in range(n // 2 - 1, -1, -1):
-            tri_recursif(donnees, i, n)
-
-        for i in range(n-1, 0, -1):
-            self.traceur.dessiner(donnees, 0, i)
-
-            donnees[0], donnees[i] = donnees[i], donnees[0]
-
-            self.traceur.dessiner(donnees, i, 0)
-
-            tri_recursif(donnees, 0, i)
-
-        return donnees
+            return resultat
     
-    def tri_arborescent_3d(self, donnees):
+    def tri_comptage_3d(self, donnees):
+        liste = [0] * (max(donnees) + 1)
+        resultat = []
+        self.traceur3D.dessiner3D(donnees, len(donnees) - 1)
+        for element in donnees:
+            liste[element] += 1
 
-        def tri_recursif_3d(donnees, i, taille):
+        for index, element in enumerate(liste):
+            if element != 0:
+                resultat.append(index)
+                self.traceur3D.dessiner3D(resultat, len(resultat) - 1)
 
-            gauche = 2 * i + 1
-            droite = 2 * i + 2
-            max = i
-
-            if gauche < taille and donnees[gauche] > donnees[max]:
-                max = gauche
-
-            if droite < taille and donnees[droite] > donnees[max]:
-                max = droite
-
-            if max != i:
-                self.traceur3D.dessiner3D(donnees, max, i)
-
-                donnees[i], donnees[max] = donnees[max], donnees[i]
-
-                self.traceur3D.dessiner3D(donnees, i, max)
-
-                tri_recursif_3d(donnees, max, taille)
-
-        n = len(donnees)
-
-        for i in range(n // 2 - 1, -1, -1):
-            tri_recursif_3d(donnees, i, n)
-
-        for i in range(n-1, 0, -1):
-            self.traceur3D.dessiner3D(donnees, 0, i)
-
-            donnees[0], donnees[i] = donnees[i], donnees[0]
-
-            self.traceur3D.dessiner3D(donnees, i, 0)
-
-            tri_recursif_3d(donnees, 0, i)
-
-        return donnees
+        return resultat
 
 
 class TriPeigne():
