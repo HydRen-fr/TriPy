@@ -96,65 +96,30 @@ def tri_pigeon(liste):
 
 
 
-def tri_rapide(liste):
-    if len(liste) <= 1:
-        return liste
+def tri_comptage(donnees):
+            liste = [0] * (max(donnees) + 1)
+            resultat = []
+            for element in donnees:
+                liste[element] += 1
 
-    pivot = liste[0]
-    gauche = []
-    droite = []
+            for index, element in enumerate(liste):
+                if element != 0:
+                    resultat.append(index)
 
-    # Partitionner la liste en deux sous-listes : les éléments inférieurs au pivot et les éléments supérieurs au pivot
-    for i in range(1, len(liste)):
-        if liste[i] < pivot:
-            gauche.append(liste[i])
-        else:
-            droite.append(liste[i])
+            return resultat
 
-    # Trier récursivement les sous-listes gauche et droite, puis concaténer les résultats avec le pivot pour obtenir la liste triée finale
-    return tri_rapide(gauche) + [pivot] + tri_rapide(droite)
-
-
-
-def tri_arborescent(liste):
-    # Fonction interne pour trier récursivement les éléments d'un tableau en les ajoutant dans un arbre binaire
-    def tri_recursif(arbre, tableau):
-        if tableau:
-            arbre.append(tableau[0])
-            tri_recursif(arbre, tableau[1:])
-    
-    # Fonction interne pour créer un arbre binaire à partir d'un tableau
-    def creer_arbre(tableau):
-        arbre = []
-        tri_recursif(arbre, tableau)
-        return arbre
-
-    # Fonction interne pour parcourir récursivement un arbre binaire et fusionner ses sous-arbres triés
-    def parcours_arbre(arbre):
-        if len(arbre) == 1:
-            return arbre
-        fils_gauche = parcours_arbre(arbre[:len(arbre) // 2])
-        fils_droit = parcours_arbre(arbre[len(arbre) // 2:])
-        return fusion(fils_gauche, fils_droit)
-
-    # Fonction interne pour fusionner deux arbres triés en un arbre trié
-    def fusion(arbre_gauche, arbre_droit):
-        fusion = []
-        i, j = 0, 0
-        while i < len(arbre_gauche) and j < len(arbre_droit):
-            if arbre_gauche[i] < arbre_droit[j]:
-                fusion.append(arbre_gauche[i])
-                i += 1
+def tri_gnome(liste):
+        index = 0
+        n = len(liste)
+        while index < n:
+            if index == 0:
+                index = index + 1
+            if liste[index] >= liste[index - 1]:
+                index = index + 1
             else:
-                fusion.append(arbre_droit[j])
-                j += 1
-        fusion.extend(arbre_gauche[i:])
-        fusion.extend(arbre_droit[j:])
-        return fusion
-
-    # Créer un arbre binaire à partir de la liste et parcourir l'arbre pour obtenir la liste triée finale
-    arbre = creer_arbre(liste)
-    return parcours_arbre(arbre)
+                liste[index], liste[index - 1] = liste[index - 1], liste[index]
+                index = index - 1
+        return liste
 
 
 def tri_a_peigne(liste):
@@ -207,8 +172,8 @@ def plot_exec_temps(liste_entiers):
     temps_tri_bulles = mesurer_temps_execution(tri_bulles, liste_entiers)
     temps_tri_cocktail = mesurer_temps_execution(tri_cocktail, liste_entiers)
     temps_tri_pigeon = mesurer_temps_execution(tri_pigeon, liste_entiers)
-    temps_tri_rapide = mesurer_temps_execution(tri_rapide, liste_entiers)
-    temps_tri_arborescent = mesurer_temps_execution(tri_arborescent, liste_entiers)
+    temps_tri_gnome = mesurer_temps_execution(tri_gnome, liste_entiers)
+    temps_tri_comptage = mesurer_temps_execution(tri_comptage, liste_entiers)
     temps_tri_a_peigne = mesurer_temps_execution(tri_a_peigne, liste_entiers)
     temps_tri_de_shell = mesurer_temps_execution(tri_shell, liste_entiers)
 
@@ -220,8 +185,8 @@ def plot_exec_temps(liste_entiers):
         ('Tri à bulles', temps_tri_bulles),
         ('Tri cocktail', temps_tri_cocktail),
         ('Tri pigeon', temps_tri_pigeon),
-        ('Tri rapide', temps_tri_rapide),
-        ('Tri arborescent', temps_tri_arborescent),
+        ('Tri gnome', temps_tri_gnome),
+        ('Tri comptage', temps_tri_comptage),
         ('Tri à peigne', temps_tri_a_peigne),
         ('Tri de Shell', temps_tri_de_shell)
     ], key=lambda x: x[1])
