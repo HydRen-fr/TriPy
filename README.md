@@ -17,21 +17,19 @@ Le site de **TriPy** est accessible [ici](https://tripy.pythonanywhere.com).
 
 # 🍻 Contribuer au projet
 
-💡 **Tout le monde est invité à contribuer au projet TriPy !**
+💡 **Tout le monde est invité à contribuer au projet TriPy !** 💡
 
 <img alt="Codons ensemble !" src="/doc/codons_ensemble.png" width="400" height="400">
 
-Téléchargez le dossier **sources** de ce répertoire qui contient tout le code source.
-<br>
-Ouvrez le dossier avec votre environnement de développement Python préféré.
-<br>
-Installez les dépendances en utilisant la commande :
+- Téléchargez le dossier **sources** de ce répertoire qui contient tout le code source.
+- Ouvrez le dossier avec votre environnement de développement Python préféré.
+- Installez les dépendances en utilisant la commande :
     
 ```
 pip install -r requirements.txt
 ```
     
-Une fois le projet installé, il peut être exécuté à partir de la ligne de commande : 
+- Une fois le projet installé, il peut être exécuté à partir de la ligne de commande : 
 
 ```
 python app.py
