@@ -22,7 +22,9 @@ Le site de **TriPy** est accessible [ici](https://tripy.pythonanywhere.com).
 <img alt="Codons ensemble !" src="/doc/codons_ensemble.png" width="400" height="400">
 
 Téléchargez le dossier **sources** de ce répertoire qui contient tout le code source.
+<br>
 Ouvrez le dossier avec votre environnement de développement Python préféré.
+<br>
 Installez les dépendances en utilisant la commande :
     
 ```
