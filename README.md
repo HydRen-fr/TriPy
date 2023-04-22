@@ -1,4 +1,4 @@
-# 📊 TriPy - Visualiseur d'Algorithmes de Tri en Python 🐍
+# 📊 TriPy - Visualiseur d'Algorithmes de Tri Python 🐍
 
 <p float="left">
   <img src="/sources/static/logo-no-bckgrnd.png" />
