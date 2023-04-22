@@ -15,13 +15,11 @@ Le site de **TriPy** est accessible [ici](https://tripy.pythonanywhere.com).
 
 ---
 
-# 🤝 Contribuer au projet 🍻
+# 🍻 Contribuer au projet
 
-💡 Toutes les idées sont bonnes à prendre ! **Tout le monde est invité à contribuer au projet TriPy**. 💡
+💡 **Tout le monde est invité à contribuer au projet TriPy !**
 
 <img alt="Codons ensemble !" src="/doc/codons_ensemble.png" width="400" height="400">
-
-Si vous le souhaitez, voici comment vous pouvez le faire :
 
 Téléchargez le dossier **sources** de ce répertoire qui contient tout le code source.
 Ouvrez le dossier avec votre environnement de développement Python préféré.
