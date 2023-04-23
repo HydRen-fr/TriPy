@@ -141,17 +141,18 @@ showPage(0);
 
 // Test RegEx de textarea car ce n'est pas input donc pas de pattern possible
 function testFunc() {
-  var donnees_interactives_check = /^(\d{1,3}\s+){1,399}\d{1,3}$/;
-  var val = document.getElementById('donnees-interactives').value;
-  var lines = val.split('\n');
-  for(var i = 0; i < lines.length; i++) {
-    if(!lines[i].match(donnees_interactives_check)) {
-      alert ('Suivez le format demandé dans le titre...');
-      return false;
-    } 
+    var donnees_interactives_check = /^(\d{1,3}\s){1,398}\d{1,3}\s?$/;
+    var val = document.getElementById('donnees-interactives').value;
+    var lines = val.split('\n');
+    for(var i = 0; i < lines.length; i++) {
+      if(!lines[i].match(donnees_interactives_check)) {
+        alert ('Suivez le format demandé dans le titre...');
+        return false;
+      } 
+    }
+    return true;
   }
-  return true;
-}
+  
 
 
 
