@@ -15,7 +15,7 @@ Le site de **TriPy** est accessible [ici](https://tripy.pythonanywhere.com).
 
 ---
 
-# 🍻 Contribuer au projet
+# 🧑🏼‍🤝‍🧑🏾 Contribuer au projet
 
 💡 **Tout le monde est invité à contribuer au projet TriPy !** 💡
 
