@@ -1,8 +1,8 @@
 # 📊 TriPy - Python sorting algorithm viewer 🐍
 
-<p float=“left”>
-  <img src=“/sources/static/logo-no-bckgrnd.png” />
-  <img src=“/doc/accueil.png” width=“400” height=“250” /> 
+<p float="left">
+  <img src="/sources/static/logo-no-bckgrnd.png" />
+  <img src="/doc/accueil.png" width="400" height="250" /> 
 </p>
 
 ![Image Demo](/doc/demo_pic.png)
@@ -19,7 +19,7 @@ The **TriPy** website can be accessed [here](https://tripy.pythonanywhere.com).
 
 💡 **Everyone is invited to contribute to the TriPy project!** 💡
 
-<img alt=“Let's code together!” src=“/doc/codons_ensemble.png” width=“400” height=“400”>
+<img alt="Codons ensemble !" src="/doc/codons_ensemble.png" width="400" height="400">
 
 - Download the **sources** folder from this directory, which contains all the source code.
 - Open the folder with your favorite Python development environment.
