@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/css/index.css"/>
+    <link rel="icon" type="image/png" href="/static/logo-no-bckgrnd.png" sizes="64x64"/>
+    <title>TriPy</title>
+  <body>
+
+    <div class="button-container">
+      <button class="button gauche" onclick="location.href='/preparation'">VISUALISER</button>
+
+      <button class="button droite" onclick="location.href='/graph'">INTERAGIR</button>
+    </div>
+
+      <div class="marque">
+        TriPy
+      </div>
+
+      <div class="gif-sous-logo">
+        <img src="/static/sortblue.gif">
+      </div>
+
+    <div id="monModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <div id="page-1" class="page active">
+          <h2 style="color: #005f9e;">Bienvenue sur TriPy !</h2>
+          <p><strong>TriPy</strong> est une <strong>plateforme pédagogique et ludique</strong> destinée à l'apprentissage du fonctionnement des algorithmes de tri.
+            Ce site est une collection de visualisations d'algorithmes de tri réalisées en <strong>Python uniquement</strong> avec une interface <strong>web ergonomique</strong>.
+          </p>
+          <img src="/static/logo.png" alt="Logo TriPy">
+          <br>
+          <br>
+          <br>
+        </div>
+
+        <div id="page-2" class="page">
+          <h1>Pourquoi j'utiliserais TriPy ?</h1>
+          <p>
+            La visualisation est très efficace pour <strong>comprendre l'algorithme</strong> et permet d'avoir un autre angle de vue que le code.
+            <br>
+            <strong>TriPy</strong> peut être ainsi utilisé dans le cadre de <strong>l'apprentissage des algorithmes de tri</strong> dans la spécialité Numérique et Sciences Informatiques par exemple.
+            Il est utile à <strong>tous les âges et niveaux</strong> de visualiser la manière dont différents algorithmes procèdent pour trier !
+          </p>
+          <img src="/static/tutoriel_viz.gif">
+          <br>
+          <br>
+          <br>
+        </div>
+
+        <div id="page-3" class="page">
+          <img src="/static/visualiser.png">
+            <br>
+            <br>
+            <br>
+            <ul>
+              <li>
+                Choisissez la manière dont vous voulez générer les données
+                <img src="/static/choix.png">
+                <img src="/static/generer.png">
+              </li>
+
+              <li>
+                Sélectionnez un algorithme
+                <img src="/static/bouton_exemple.png" >
+                (la couleur des boutons correspond à la complexité de l'algorithme)
+              </li>
+
+              <li>
+                Comparez avec un second algorithme
+                <img src="/static/exemple_comparer.png">
+              </li>
+
+              <li>
+                Visualisez en 3D
+                <img src="/static/exemple_3d.png">
+              </li>
+
+              <li>
+                Passez votre souris sur les élements bleus pour afficher un graphe
+                <img src="/static/element_bleu.png">
+              </li>
+              <br>
+              <li>
+                Mettez sur pause | Avancez/reculez la visualisation | Mettez en grand écran
+                <img src="/static/video.png">
+                <img src="/static/grand_ecran.png">
+              </li>
+            </ul>
+            <br>
+        </div>
+
+        <div id="page-4" class="page">
+          <img src="/static/interagir.png">
+            <br>
+            <br>
+            <br>
+            <ul>
+              <li>
+                <img src="/static/bouton_graph.png" width="120" height="100">
+                Générez un graphique des différents temps d'exécutions des algorithmes de tri à partir des données de votre choix
+                <img src="/static/graph.png">
+              </li>
+            </ul>
+            <br>
+            <br>
+            <br>
+        </div>
+
+        <div id="navigation">
+          <button id="prev-page">◀</button>
+          <button id="next-page">▶</button>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+  </body>
+
+</html>
