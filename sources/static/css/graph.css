@@ -1,0 +1,163 @@
+/* Normalisation de base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.button {
+  flex: 1;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  font-size: 2rem; /* Utilisation de rem */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0072c6;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  margin: 0 5px; /* Espacement entre les boutons */
+}
+
+.button:hover {
+  background-color: #005ea2;
+}
+
+.button:active {
+  background-color: #005ea2;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button.gauche {
+  background-color: #002244;
+}
+
+.button.gauche:hover {
+  background-color: #00162a;
+}
+
+.button.droite {
+  background-color: #00b3b3;
+  font-size: 2.5rem; /* Utilisation de rem */
+}
+
+.button.droite:hover {
+  background-color: #008c8c;
+}
+
+.graph-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 80px); /* La hauteur de l'écran moins la hauteur des boutons */
+}
+
+.graph-container .interactive-input {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.graph-container .interactive-input p {
+  margin: 20px auto 8px;
+  font-size: 1.5rem; /* Utilisation de rem */
+  font-weight: bold;
+  text-align: center;
+}
+
+.graph-container .interactive-input textarea {
+  margin: auto;
+  font-size: 1.25rem; /* Utilisation de rem */
+  font-weight: bold;
+  padding: 0.625rem; /* Utilisation de rem */
+  width: 80%;
+  height: 150px;
+  resize: vertical;
+  text-align: left;
+  border: 2px solid #000000;
+  border-radius: 0.625rem; /* Utilisation de rem */
+  outline: none;
+  background-color: #f1f1f1;
+}
+
+.buttonGraph {
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 39%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4.625rem; /* Utilisation de rem */
+  height: 4.625rem; /* Utilisation de rem */
+  background-color: rgb(0, 8, 116);
+  color: #ffffff;
+  border-radius: 0.625rem; /* Utilisation de rem */
+  font-size: 3.4375rem; /* Utilisation de rem */
+  border: 0.1875rem solid #00162a; /* Utilisation de rem */
+  transition: all 0.3s ease-out;
+}
+
+.buttonGraph:hover {
+  background-color: #00162a;
+}
+
+.graph-container .execution-time-graph {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+  margin-top: 5rem; /* Utilisation de rem */
+}
+
+/* Media Queries pour différentes tailles d'écran */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 1.5rem;
+    margin: 5px 0;
+  }
+
+  .graph-container .interactive-input p {
+    font-size: 1.25rem;
+  }
+
+  .graph-container .interactive-input textarea {
+    font-size: 1rem;
+  }
+
+  .buttonGraph {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2.5rem;
+  }
+
+  .graph-container .execution-time-graph {
+    flex-direction: column;
+    height: auto;
+    margin-top: 2.5rem;
+  }
+}

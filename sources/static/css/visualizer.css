@@ -1,0 +1,298 @@
+/* Normalisation de base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.button {
+  flex: 1;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  font-size: 2rem; /* Utilisation de rem */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0072c6;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  margin: 0 5px; /* Espacement entre les boutons */
+}
+
+.button:hover {
+  background-color: #005ea2;
+}
+
+.button:active {
+  background-color: #005ea2;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button.gauche {
+  background-color: #002244;
+  font-size: 2.5rem; /* Utilisation de rem */
+}
+
+.button.gauche:hover {
+  background-color: #00162a;
+}
+
+.button.droite {
+  background-color: #00b3b3;
+}
+
+.button.droite:hover {
+  background-color: #008c8c;
+}
+
+.algorithm-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 100px); /* Ajusté pour inclure les boutons */
+}
+
+.first-algo {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+}
+
+.first-algo .algo-video {
+  flex-basis: 50%;
+}
+
+.arrow {
+  font-size: 7.5rem; /* Utilisation de rem */
+  position: relative;
+  top: 0;
+  left: -0.625rem; /* Utilisation de rem */
+  color: #00ccff;
+  -webkit-text-stroke: 0.125rem rgb(0, 111, 185); /* Utilisation de rem */
+}
+
+.first-algo .algo-explanation {
+  margin-top: 2.8125rem; /* Utilisation de rem */
+  flex-basis: 50%;
+  font-size: 1.3125rem; /* Utilisation de rem */
+}
+
+.highlight {
+  color: blue;
+  display: inline;
+}
+
+.highlight img {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+  border-radius: 2.5rem; /* Utilisation de rem */
+}
+
+.highlight:hover img {
+  content: url('/preparation/complexite');
+  display: block;
+}
+
+.button3D {
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4.625rem; /* Utilisation de rem */
+  height: 4.625rem; /* Utilisation de rem */
+  background-color: rgba(144, 19, 254, 1);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.875rem; /* Utilisation de rem */
+  border: 0.1875rem solid #00ccff; /* Utilisation de rem */
+  transition: all 0.3s ease-out;
+}
+
+.button3D:hover {
+  background-color: #2f004e;
+}
+
+.compare-btn {
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.8125rem; /* Utilisation de rem */
+  padding: 0.625rem; /* Utilisation de rem */
+  color: #fff;
+  border: 0.25rem solid #005386; /* Utilisation de rem */
+  border-radius: 1.25rem / 2.5rem; /* Utilisation de rem */
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  width: 15.625rem; /* Utilisation de rem */
+  height: 7.5rem; /* Utilisation de rem */
+  line-height: 7.5rem; /* Utilisation de rem */
+}
+
+.compare-btn:hover {
+  background-color: #0027d4;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: auto;
+  padding: 1.25rem; /* Utilisation de rem */
+  background: #fff;
+  border-radius: 0.3125rem; /* Utilisation de rem */
+  width: 60%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%;
+  transform: translateY(50%);
+  box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.3); /* Utilisation de rem */
+  z-index: 9999;
+}
+
+.popup .close {
+  position: absolute;
+  top: 1.25rem; /* Utilisation de rem */
+  right: 1.875rem; /* Utilisation de rem */
+  transition: all 200ms;
+  font-size: 1.875rem; /* Utilisation de rem */
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.popup .close:hover {
+  color: #ff0000;
+}
+
+.popup .popup-compare-btn {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.popup .popup-compare-btn button[type="submit"] {
+  display: inline-block;
+  width: 28%;
+  height: 50px;
+  margin-right: 2%;
+  margin-top: 12px;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.3s ease-out;
+}
+
+@media screen and (max-width: 700px) {
+  .popup {
+    width: 90%;
+  }
+}
+
+#loader-2 {
+  display: none;
+  text-align: center;
+  position: fixed;
+  bottom: 25%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.dots-bars-5 {
+  width: 2.5rem; /* Utilisation de rem */
+  height: 1.875rem; /* Utilisation de rem */
+  --c: linear-gradient(currentColor 0 0);
+  background:
+    var(--c) 0 100% / 0.5rem 1.875rem,
+    var(--c) 50% 100% / 0.5rem 1.25rem,
+    var(--c) 100% 100% / 0.5rem 0.625rem;
+  background-repeat: no-repeat;
+  position: relative;
+  clip-path: inset(-100% 0);
+}
+
+.dots-bars-5:before {
+  content: "";
+  position: absolute;
+  width: 0.5rem; /* Utilisation de rem */
+  height: 0.5rem; /* Utilisation de rem */
+  border-radius: 50%;
+  background: currentColor;
+  left: -1rem; /* Utilisation de rem */
+  top: 0;
+  animation:
+    db5-1 2s linear infinite,
+    db5-2 0.5s cubic-bezier(0, 200, .8, 200) infinite;
+}
+
+@keyframes db5-1 {
+  0% {
+    left: -1rem; /* Utilisation de rem */
+    transform: translateY(-0.5rem); /* Utilisation de rem */
+  }
+  100% {
+    left: calc(100% + 0.5rem); /* Utilisation de rem */
+    transform: translateY(1.375rem); /* Utilisation de rem */
+  }
+}
+
+@keyframes db5-2 {
+  100% {
+    top: -0.00625rem; /* Utilisation de rem */
+  }
+}

@@ -1,0 +1,177 @@
+/* Normalisation de base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6.25rem; /* Utilisation de rem */
+  background-color: #fff;
+  padding: 0 1rem; /* Espacement horizontal */
+}
+
+.button {
+  flex: 1;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  font-size: 2.375rem; /* Utilisation de rem */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0072c6;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out;
+  margin: 0 0.5rem; /* Espacement entre les boutons */
+}
+
+.button:hover,
+.button:active {
+  background-color: #005ea2;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button.gauche {
+  background-color: #002244;
+  font-size: 5rem; /* Utilisation de rem */
+}
+
+.button.gauche:hover {
+  background-color: #00162a;
+}
+
+.button.droite {
+  background-color: #00b3b3;
+}
+
+.button.droite:hover {
+  background-color: #008c8c;
+}
+
+.algorithm-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 6.25rem); /* Ajusté pour les boutons */
+  align-items: center;
+  justify-content: center;
+}
+
+.first-algo {
+  margin: auto;
+  max-width: 50rem; /* Utilisation de rem */
+  width: 100%; /* S'adapte à la largeur du conteneur */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.algo-video {
+  width: 100%;
+  max-width: 100%; /* Assure que le contenu ne dépasse pas le conteneur */
+}
+
+.algo-explanation {
+  margin-top: 2.8125rem; /* Utilisation de rem */
+  font-size: 1.3125rem; /* Utilisation de rem */
+}
+
+.arrow {
+  font-size: 7.5rem; /* Utilisation de rem */
+  color: #00ccff;
+  -webkit-text-stroke: 0.125rem rgb(0, 111, 185); /* Utilisation de rem */
+}
+
+.highlight {
+  color: blue;
+  display: inline;
+}
+
+.highlight img {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+  object-fit: contain;
+  border-radius: 2.5rem; /* Utilisation de rem */
+}
+
+.highlight:hover img {
+  content: url('/preparation/complexite');
+  display: block;
+}
+
+.button3D {
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4.625rem; /* Utilisation de rem */
+  height: 4.625rem; /* Utilisation de rem */
+  background-color: rgba(144, 19, 254, 1);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.875rem; /* Utilisation de rem */
+  border: 0.1875rem solid #00ccff; /* Utilisation de rem */
+  transition: background-color 0.3s ease-out;
+}
+
+.button3D:hover {
+  background-color: #2f004e;
+}
+
+/* Media Queries pour appareils mobiles */
+@media screen and (max-width: 700px) {
+  .button {
+    font-size: 1.875rem; /* Réduction pour les petits écrans */
+  }
+
+  .button.gauche {
+    font-size: 3.75rem; /* Réduction pour les petits écrans */
+  }
+
+  .button.droite {
+    font-size: 3.75rem; /* Réduction pour les petits écrans */
+  }
+
+  .first-algo {
+    max-width: 90%; /* Ajustement pour les petits écrans */
+  }
+
+  .highlight img {
+    width: 80%; /* Ajustement pour les petits écrans */
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1200px) {
+  .first-algo {
+    max-width: 80%; /* Ajustement pour les écrans moyens */
+  }
+
+  .highlight img {
+    width: 60%; /* Ajustement pour les écrans moyens */
+    height: auto;
+  }
+}

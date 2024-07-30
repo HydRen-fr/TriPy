@@ -1,0 +1,121 @@
+/* Normalisation de base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6.25rem; /* Utilisation de rem */
+  background-color: #fff;
+  padding: 0 1rem; /* Espacement horizontal */
+}
+
+.button {
+  flex: 1;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  font-size: 2.375rem; /* Utilisation de rem */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0072c6;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out;
+  margin: 0 0.5rem; /* Espacement entre les boutons */
+}
+
+.button:hover,
+.button:active {
+  background-color: #005ea2;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button.gauche {
+  background-color: #002244;
+  font-size: 5rem; /* Utilisation de rem */
+}
+
+.button.gauche:hover {
+  background-color: #00162a;
+}
+
+.button.droite {
+  background-color: #00b3b3;
+}
+
+.button.droite:hover {
+  background-color: #008c8c;
+}
+
+.algorithm-container {
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 6.25rem); /* Ajusté pour les boutons */
+  align-items: stretch; /* Assure que les éléments prennent toute la hauteur */
+}
+
+.first-algo,
+.compare-algo {
+  flex: 1;
+  overflow: auto; /* Ajoute un défilement si le contenu dépasse */
+  padding: 1rem; /* Espacement interne */
+}
+
+.first-algo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5rem; /* Espacement entre les deux colonnes */
+}
+
+.compare-algo {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 700px) {
+  .button {
+    font-size: 1.875rem; /* Réduction pour les petits écrans */
+  }
+
+  .button.gauche {
+    font-size: 3.75rem; /* Réduction pour les petits écrans */
+  }
+
+  .button.droite {
+    font-size: 3.75rem; /* Réduction pour les petits écrans */
+  }
+
+  .algorithm-container {
+    flex-direction: column; /* Passage en colonne pour petits écrans */
+  }
+
+  .first-algo,
+  .compare-algo {
+    margin-right: 0;
+    margin-bottom: 1rem; /* Espacement entre les sections */
+  }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1200px) {
+  .first-algo,
+  .compare-algo {
+    padding: 0.5rem; /* Ajustement pour les écrans moyens */
+  }
+}

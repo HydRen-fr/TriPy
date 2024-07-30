@@ -1,0 +1,215 @@
+/* Normalisation de base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.button {
+  flex: 1;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  font-size: 2rem; /* Utilisation de rem */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0072c6;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  margin: 0 5px; /* Espacement entre les boutons */
+}
+
+.button:hover {
+  background-color: #005ea2;
+}
+
+.button:active {
+  background-color: #005ea2;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button.gauche {
+  background-color: #002244;
+  font-size: 2.5rem; /* Utilisation de rem */
+}
+
+.button.gauche:hover {
+  background-color: #00162a;
+}
+
+.button.droite {
+  background-color: #00b3b3;
+}
+
+.button.droite:hover {
+  background-color: #008c8c;
+}
+
+.algorithm-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 100px); /* Ajusté pour inclure les boutons */
+}
+
+.first-algo {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+}
+
+.first-algo .algo-video {
+  flex-basis: 50%;
+}
+
+.arrow {
+  font-size: 7.5rem; /* Utilisation de rem */
+  position: relative;
+  top: 0;
+  left: -0.625rem; /* Utilisation de rem */
+  color: #00ccff;
+  -webkit-text-stroke: 0.125rem rgb(0, 111, 185); /* Utilisation de rem */
+}
+
+.first-algo .algo-explanation {
+  margin-top: 2.8125rem; /* Utilisation de rem */
+  flex-basis: 50%;
+  font-size: 1.3125rem; /* Utilisation de rem */
+}
+
+.highlight {
+  color: blue;
+  display: inline;
+}
+
+.highlight img {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+  border-radius: 2.5rem; /* Utilisation de rem */
+}
+
+.first-algo .algo-explanation .highlight:hover img {
+  content: url('/preparation/complexite');
+  display: block;
+}
+
+.compare-algo .algo-explanation .highlight:hover img {
+  content: url('/preparation/complexite_2');
+  display: block;
+}
+
+.button3D {
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4.625rem; /* Utilisation de rem */
+  height: 4.625rem; /* Utilisation de rem */
+  background-color: rgba(144, 19, 254, 1);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.875rem; /* Utilisation de rem */
+  border: 0.1875rem solid #00ccff; /* Utilisation de rem */
+  transition: all 0.3s ease-out;
+}
+
+.button3D:hover {
+  background-color: #2f004e;
+}
+
+.compare-algo {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+}
+
+.compare-algo .algo-video {
+  flex-basis: 50%;
+}
+
+.arrow-2 {
+  font-size: 7.5rem; /* Utilisation de rem */
+  position: relative;
+  top: 0;
+  left: -0.625rem; /* Utilisation de rem */
+  color: #00ccff;
+  -webkit-text-stroke: 0.125rem rgb(0, 111, 185); /* Utilisation de rem */
+}
+
+.compare-algo .algo-explanation {
+  margin-top: 2.8125rem; /* Utilisation de rem */
+  flex-basis: 50%;
+  font-size: 1.3125rem; /* Utilisation de rem */
+}
+
+/* Media Queries pour différentes tailles d'écran */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 1.5rem;
+    margin: 5px 0;
+  }
+
+  .algorithm-container {
+    height: auto;
+  }
+
+  .first-algo, .compare-algo {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .arrow, .arrow-2 {
+    font-size: 4rem;
+    left: 0;
+  }
+
+  .first-algo .algo-explanation, .compare-algo .algo-explanation {
+    font-size: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .button3D {
+    width: 3.75rem;
+    height: 3.75rem;
+    font-size: 1.25rem;
+    border: 0.125rem solid #00ccff;
+  }
+}

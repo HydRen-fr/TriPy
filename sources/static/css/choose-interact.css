@@ -1,0 +1,145 @@
+/* Normalisation de base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.button {
+  flex: 1;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  font-size: 2rem; /* Utilisation de rem */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0072c6;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  margin: 0 5px; /* Espacement entre les boutons */
+}
+
+.button:hover {
+  background-color: #005ea2;
+}
+
+.button:active {
+  background-color: #005ea2;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button.gauche {
+  background-color: #002244;
+}
+
+.button.gauche:hover {
+  background-color: #00162a;
+}
+
+.button.droite {
+  background-color: #00b3b3;
+  font-size: 2.5rem; /* Utilisation de rem */
+}
+
+.button.droite:hover {
+  background-color: #008c8c;
+}
+
+.button-choose-interact {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 80px); /* La hauteur de l'écran moins la hauteur des boutons */
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.button-choose-interact .button {
+  width: 20rem; /* Utilisation de rem */
+  height: 20rem; /* Utilisation de rem */
+  background-color: rgba(74, 144, 226, 1);
+  color: #ffffff;
+  border-radius: 2.5rem; /* Utilisation de rem */
+  border: 0.625rem solid #00485a; /* Utilisation de rem */
+  position: absolute;
+  transition: all 0.3s ease-out;
+  font-size: 2rem; /* Utilisation de rem */
+}
+
+.button-choose-interact .button:nth-child(1) {
+  top: 10%;
+  left: 10%;
+}
+
+.button-choose-interact .button:nth-child(2) {
+  top: 10%;
+  right: 10%;
+}
+
+.button-choose-interact .button:nth-child(3) {
+  bottom: 10%;
+  left: 10%;
+}
+
+.button-choose-interact .button:nth-child(4) {
+  bottom: 10%;
+  right: 10%;
+}
+
+.button-choose-interact .button:hover {
+  background-color: rgb(38, 104, 180);
+}
+
+/* Media Queries pour différentes tailles d'écran */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 1.5rem;
+    margin: 5px 0;
+  }
+
+  .button-choose-interact .button {
+    width: 15rem;
+    height: 15rem;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    border: 0.5rem solid #00485a;
+  }
+
+  .button-choose-interact .button:nth-child(1),
+  .button-choose-interact .button:nth-child(2),
+  .button-choose-interact .button:nth-child(3),
+  .button-choose-interact .button:nth-child(4) {
+    position: static;
+    margin: 10px 0;
+  }
+
+  .button-choose-interact {
+    height: auto;
+    justify-content: flex-start;
+  }
+}
